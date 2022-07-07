@@ -21,9 +21,20 @@ $yellow: #fed530;
     align-items: center;
     min-height: 104px;
   }
+
+  &__container_absolute {
+    position: absolute;
+    max-width: 1260px;
+    padding: 0 30px 0 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &.container {
+    position: relative;
+  }
 }
-.container {
-}
+
 .top-header {
   position: relative;
 
@@ -177,6 +188,7 @@ $yellow: #fed530;
     transition: all 0.3s ease;
 
     position: absolute;
+    z-index: 1;
     right: 0;
     top: -1%;
     width: 100%;
@@ -212,6 +224,106 @@ $yellow: #fed530;
   @media (max-width: 767.98px) {
     span {
       display: none;
+    }
+  }
+}
+
+//--------------------------------------------------/
+
+.previews-container {
+  height: 1000px;
+  background-image: url(../../assets/images/previews/00.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.previews {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    background-color: #000000;
+    opacity: 0.55;
+  }
+
+  &__btn-play {
+    position: relative;
+    flex: 1 1 50%;
+    align-self: self-end;
+    
+    img {
+      cursor: pointer;
+    }
+    
+  }
+
+  // .previews__description
+
+  &__description {
+    position: relative;
+    justify-content: center;
+    align-self: self-end;
+    flex: 1 1 50%;
+    padding: 0 105px;
+  }
+
+  // .previews__title
+
+  &__title {
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 96px;
+  }
+
+  // .previews__subtitle
+
+  &__subtitle {
+    margin: 24px 0 32px;
+  }
+
+  // .previews__details
+
+  &__details {
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  // .previews__trailers
+
+  &__trailers {
+    position: relative;
+    flex: 1 1 100%;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+
+  img {
+    width: 296px;
+    height: 160px;
+  }
+
+  &__item {
+    position: relative;
+
+    span {
+      position: absolute;
+      right: 24px;
+      bottom: -25px;
     }
   }
 }
