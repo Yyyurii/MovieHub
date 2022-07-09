@@ -62,17 +62,17 @@ button::-moz-focus-inner {
 a,
 a:visited {
 	text-decoration: none;
-	color: inherit; 
+	color: inherit;
 }
 a:hover {
 	text-decoration: none;
-	cursor:pointer;  
+	cursor: pointer;
 }
 ul li {
 	list-style: none;
 	list-style-type: none;
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 img {
 	vertical-align: top;
@@ -90,7 +90,14 @@ h6 {
 //-------------------------------/
 
 .container {
-  max-width: 1260px;
-  padding: 0 15px;
-  margin: 0 auto;
+	padding: 0 15px;
+	margin: 0 auto;
+	
+	@media (min-width: 1400px) {
+		max-width: 1260px;
+	}
+
+	@media (max-width: 1400px) {
+		max-width: 1023.98px;
+	}
 }

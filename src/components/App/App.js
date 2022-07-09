@@ -4,9 +4,9 @@ import userImg from "../../assets/images/icon/photo-cover.svg";
 import logo from "../../assets/images/icon/logo.svg";
 import playBtn from "../../assets/images/previews/play-button.svg";
 import trailer1 from "../../assets/images/previews/01.jpg";
-// import trailer2 from "../../assets/images/previews/02.jpg";
-// import trailer3 from "../../assets/images/previews/03.jpg";
-// import trailer4 from "../../assets/images/previews/04.jpg";
+import trailer2 from "../../assets/images/previews/02.jpg";
+import trailer3 from "../../assets/images/previews/03.jpg";
+import trailer4 from "../../assets/images/previews/04.jpg";
 import duration from "../../assets/images/icon/duration.svg";
 import views from "../../assets/images/icon/views.svg";
 
