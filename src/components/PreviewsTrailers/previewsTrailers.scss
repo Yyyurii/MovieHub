@@ -1,0 +1,51 @@
+.trailers {
+  position: relative;
+  flex: 1 1 100%;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  align-self: center;
+  padding: 0 0 30px;
+
+  p {
+    margin: 0 0 32px;
+
+    @media (max-width: 479.98px) {
+      text-align: center;
+      margin: 16px 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    order: 3;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 479.98px) {
+    margin: 20px 0;
+  }
+
+  img {
+    width: 296px;
+    height: 160px;
+  }
+
+  &__item {
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    span {
+      position: absolute;
+      right: 24px;
+      bottom: -25px;
+    }
+  }
+}

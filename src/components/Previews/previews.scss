@@ -1,0 +1,29 @@
+.previews-container {
+  min-height: 100vh;
+  background-image: url(../../assets/images/previews/00.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  .container {
+    min-height: 100vh;
+    display: flex;
+  }
+}
+
+.previews {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000000;
+    opacity: 0.55;
+  }
+}

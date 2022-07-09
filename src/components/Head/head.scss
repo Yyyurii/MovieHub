@@ -1,0 +1,22 @@
+.head {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 104px;
+
+  &_absolute {
+    position: absolute;
+    padding: 0 30px 0 0;
+    width: 100%;
+    z-index: 1;
+
+    @media (min-width: 1400px) {
+      max-width: 1260px;
+    }
+
+    @media (max-width: 1400px) {
+      max-width: 1023.98px;
+    }
+  }
+}

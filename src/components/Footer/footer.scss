@@ -1,0 +1,25 @@
+.footer {
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin: 0 50px 0 10px;
+    }
+
+    img {
+      width: 24px;
+    }
+  }
+}

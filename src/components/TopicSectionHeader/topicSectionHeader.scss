@@ -1,0 +1,46 @@
+$yellow: #fed530;
+
+.topic-section {
+  &__title {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 64px;
+    padding: 0 0 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1400px) {
+      font-size: 36px;
+      line-height: 52px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 126px 0 56px;
+
+    @media (max-width: 1400px) {
+      margin: 56px 0;
+    }
+
+    button {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      color: $yellow;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 478.98px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+}
