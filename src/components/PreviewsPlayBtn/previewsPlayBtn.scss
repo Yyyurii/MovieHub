@@ -1,0 +1,23 @@
+.play-btn {
+  position: relative;
+  flex: 1 1 50%;
+  align-self: self-end;
+
+  img {
+    cursor: pointer;
+
+    @media (max-width: 767.98px) {
+      width: 100px;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    flex: 1 1 20%;
+  }
+
+  @media (max-width: 900px) {
+    margin: 0 auto;
+    flex: none;
+    order: 2;
+  }
+}
