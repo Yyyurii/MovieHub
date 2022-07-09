@@ -102,7 +102,7 @@ const App = () => {
                     <span>01</span>
                     <img src={trailer1} alt="trailers" />
                   </div>
-                  {/* <div className="gallery__item">
+                  <div className="gallery__item">
                     <span>02</span>
                     <img src={trailer2} alt="trailers" />
                   </div>
@@ -113,7 +113,7 @@ const App = () => {
                   <div className="gallery__item">
                     <span>04</span>
                     <img src={trailer4} alt="trailers" />
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
