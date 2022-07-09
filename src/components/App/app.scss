@@ -459,8 +459,6 @@ $yellow: #fed530;
     }
 
     @media (max-width: 767.98px) {
-      display: flex;
-      flex-direction: column;
     }
   }
 }
@@ -476,10 +474,6 @@ $yellow: #fed530;
 
   @media (max-width: 1400px) {
     padding: 15px;
-  }
-
-  @media (max-width: 479.98px) {
-    height: 400px;
   }
 
   &:hover {
@@ -501,6 +495,15 @@ $yellow: #fed530;
     top: 24px;
     left: 24px;
     color: #2e2e2e;
+
+    @media (max-width: 479.98px) {
+      font-size: 14px;
+      line-height: 18px;
+      width: 70px;
+      height: 20px;
+      top: 15px;
+      left: 15px;
+    }
   }
 
   &_wider {
@@ -540,10 +543,18 @@ $yellow: #fed530;
     font-size: 48px;
     line-height: 64px;
     margin: 20px 0 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     @media (max-width: 1400px) {
       font-size: 24px;
       line-height: 36px;
+    }
+
+    @media (max-width: 479.98px) {
+      font-size: 18px;
+      line-height: 24px;
     }
   }
 }

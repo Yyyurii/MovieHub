@@ -141,7 +141,7 @@ const App = () => {
                     <span>21.3K views</span>
                   </div>
                 </div>
-                <h1 className="card__title">Interspace</h1>
+                <h1 title="Interspace" className="card__title">Interspace</h1>
               </a>
               <a href="/" className="card">
                 <div className="card__genre">Fantasy</div>
