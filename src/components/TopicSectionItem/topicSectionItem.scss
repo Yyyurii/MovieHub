@@ -18,6 +18,13 @@ $yellow: #fed530;
     box-shadow: inset 0px 0px 20px 5px rgba(254, 213, 48, 0.74);
   }
 
+  &_wider {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
   &__genre {
     display: flex;
     justify-content: center;
@@ -43,13 +50,6 @@ $yellow: #fed530;
     }
   }
 
-  &_wider {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
   &__details {
     font-size: 14px;
     line-height: 24px;
@@ -69,11 +69,15 @@ $yellow: #fed530;
     }
   }
 
+  &__duration, &__views {
+    display:  flex;
+  }
+
   &__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 64px;
-    margin: 20px 0 0;
+    margin: 10px 0 0;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

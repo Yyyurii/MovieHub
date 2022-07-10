@@ -16,6 +16,10 @@ $yellow: #fed530;
       opacity: 1;
       top: 90px;
       visibility: visible;
+
+      @media(max-width: 767.98px) {
+        top: 75px;
+      }
     }
   }
 
