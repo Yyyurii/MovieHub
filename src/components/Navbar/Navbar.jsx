@@ -3,17 +3,17 @@ import "./navbar.scss";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [isShowBurger, setIsShowBurger] = useState(false);
+  const [isShownBurger, setIsShownBurger] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    setIsShowBurger((isShowBurger) => !isShowBurger);
+    setIsShownBurger((isShownBurger) => !isShownBurger);
   };
 
   return (
     <>
       <div
-        className={isShowBurger ? "burger active" : "burger"}
+        className={isShownBurger ? "burger active" : "burger"}
         onClick={handleClick}
       >
         <span></span>
@@ -23,7 +23,7 @@ const Navbar = () => {
 
       <nav className="menu">
         <ul
-          className={isShowBurger ? "menu__list burger-active" : "menu__list"}
+          className={isShownBurger ? "menu__list burger-active" : "menu__list"}
         >
           <li className="menu__item">
             <a href="/" className="menu__link">

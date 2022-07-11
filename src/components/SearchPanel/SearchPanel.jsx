@@ -3,17 +3,17 @@ import "./searchPanel.scss";
 import { useState } from "react";
 
 const SearchPanel = () => {
-  const [isShowInput, setIsShowInput] = useState(false);
+  const [isShownInput, setIsShownInput] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    setIsShowInput((isShowInput) => !isShowInput);
+    setIsShownInput((isShownInput) => !isShownInput);
   };
 
   return (
     <form
       action="#"
-      className={isShowInput ? "search-panel active" : "search-panel"}
+      className={isShownInput ? "search-panel active" : "search-panel"}
     >
       <input
         className="search-panel__input"
