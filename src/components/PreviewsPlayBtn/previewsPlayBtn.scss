@@ -2,13 +2,21 @@
   position: relative;
   flex: 1 1 50%;
   align-self: self-end;
+  transition: all 0.3s ease;
+
+  &__img-container {
+    padding: 15px;
+    border-radius: 50%;
+    background: #fed530;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   img {
     cursor: pointer;
-
-    @media (max-width: 767.98px) {
-      width: 100px;
-    }
+    width: 34px;
   }
 
   @media (max-width: 1400px) {
@@ -21,3 +29,16 @@
     order: 2;
   }
 }
+
+.CircularProgressbar-path {
+  stroke-width: 1.5px;
+}
+.CircularProgressbar-trail {
+  stroke-width: 1.5px;
+}
+// .CircularProgressbar-text {
+//   fill: yellow;
+// }
+// .CircularProgressbar-background {
+//   fill: green;
+// }

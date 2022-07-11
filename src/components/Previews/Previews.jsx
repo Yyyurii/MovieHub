@@ -8,8 +8,8 @@ import PreviewsBackgroundImg from "../PreviewsBackgroundImg";
 const Previews = () => {
   return (
     <div className="previews-container">
-      <PreviewsBackgroundImg />
       <div className="container">
+      <PreviewsBackgroundImg />
         <div className="previews">
           <PreviewsPlayBtn />
           <PreviewsDescription />
