@@ -5,7 +5,7 @@ $yellow: #fed530;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  background: rgba(0, 0, 0, 0.1);
   padding: 24px;
   position: relative;
   border-radius: 0;
@@ -27,12 +27,44 @@ $yellow: #fed530;
     grid-row-end: 2;
   }
 
+  &__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &__genre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5px 8px;
+    gap: 10px;
+    width: fit-content;
+    height: 27px;
+    background: $yellow;
+    border-radius: 16px;
+    color: #2e2e2e;
+    margin-bottom: auto;
+
+    @media (max-width: 479.98px) {
+      font-size: 14px;
+      line-height: 18px;
+      height: 20px;
+      top: 15px;
+      left: 15px;
+    }
+  }
+
   &__raiting {
     font-size: 14px;
     line-height: 24px;
     display: flex;
-    gap: 25px;
-    margin-bottom: auto;
+    align-items: center;
 
     img {
       margin-right: 8px;

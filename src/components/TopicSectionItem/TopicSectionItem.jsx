@@ -5,14 +5,17 @@ import views from "../../assets/images/icon/views.svg";
 import imdb from "../../assets/images/icon/imdb.svg";
 import imdb2 from "../../assets/images/icon/imdb2.svg";
 
-const TopicSectionItem = () => {
+const TopicSectionItem = ({ details, wider }) => {
+  const { title, imgPath, rating, genre } = details;
   return (
-    <a href="/" className="card">
+    <a href="/" className={wider === 0 ? "card card_wider" : "card"}>
+      <img className="card__poster" src={imgPath} alt="main poster" />
+      <div className="card__genre">{genre[0]}</div>
       <div className="card__raiting">
-          <img src={imdb} alt="views" />
-          <span>6.9</span>
-        </div>
-      <h1 className="card__title">Interspace</h1>
+        <img src={imdb} alt="views" />
+        <span>{rating}</span>
+      </div>
+      <h1 className="card__title">{title}</h1>
     </a>
   );
 };
