@@ -8,6 +8,8 @@ $yellow: #fed530;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
   padding: 24px;
   position: relative;
+  border-radius: 0;
+  border: 0;
 
   @media (max-width: 1400px) {
     padding: 15px;
@@ -25,52 +27,23 @@ $yellow: #fed530;
     grid-row-end: 2;
   }
 
-  &__genre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5px 8px;
-    gap: 10px;
-    width: 77px;
-    height: 27px;
-    background: $yellow;
-    border-radius: 16px;
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    color: #2e2e2e;
-
-    @media (max-width: 479.98px) {
-      font-size: 14px;
-      line-height: 18px;
-      width: 70px;
-      height: 20px;
-      top: 15px;
-      left: 15px;
-    }
-  }
-
-  &__details {
+  &__raiting {
     font-size: 14px;
     line-height: 24px;
     display: flex;
     gap: 25px;
+    margin-bottom: auto;
 
     img {
       margin-right: 8px;
-      width: 14px;
+      width: 36px;
     }
 
     @media (max-width: 1400px) {
-      flex-direction: column;
       gap: 10px;
-      font-size: 10px;
-      line-height: 14px;
+      font-size: 18px;
+      line-height: 36px;
     }
-  }
-
-  &__duration, &__views {
-    display:  flex;
   }
 
   &__title {

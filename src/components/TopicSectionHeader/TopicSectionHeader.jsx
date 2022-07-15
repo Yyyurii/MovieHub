@@ -4,7 +4,7 @@ const TopicSectionHeader = () => {
   return (
     <div className="topic-section__header">
       <a href="/" className="topic-section__title">
-        Top Movies
+        The Most Popular Movies
       </a>
       <button>View More</button>
     </div>
