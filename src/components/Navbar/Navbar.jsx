@@ -1,47 +1,46 @@
 import "./navbar.scss";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import NavMenu from "../NavMenu";
+import NavSidebar from "../NavSidebar";
 
 const Navbar = () => {
-  const [isShownBurger, setIsShownBurger] = useState(false);
+  const [show, setShow] = useState(false);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setIsShownBurger((isShownBurger) => !isShownBurger);
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  function getWindowSize() {
+    const { innerWidth } = window;
+    return innerWidth ;
+  }
 
   return (
     <>
-      <div
-        className={isShownBurger ? "burger active" : "burger"}
-        onClick={handleClick}
-      >
+      <div className="burger" onClick={handleShow}>
         <span></span>
         <span></span>
         <span></span>
       </div>
-
-      <nav className="menu">
-        <ul
-          className={isShownBurger ? "menu__list burger-active" : "menu__list"}
-        >
-          <li className="menu__item">
-            <a href="/" className="menu__link">
-              Movies
-            </a>
-          </li>
-          <li className="menu__item">
-            <a href="/" className="menu__link">
-              TV Shoes
-            </a>
-          </li>
-          <li className="menu__item">
-            <a href="/" className="menu__link">
-              Coming Soon
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {windowSize > 800 ? (
+        <NavMenu show={show} />
+      ) : (
+        <NavSidebar show={show} onHide={handleClose} />
+      )}
     </>
   );
 };

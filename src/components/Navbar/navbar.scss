@@ -1,51 +1,5 @@
 $yellow: #fed530;
 
-.menu {
-  padding: 0 50px;
-
-  @media (max-width: 767.98px) {
-    position: absolute;
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    gap: 48px;
-
-    @media (max-width: 767.98px) {
-      display: none;
-
-      &.burger-active {
-        display: flex;
-        position: absolute;
-        flex-direction: column;
-        align-items: self-start;
-        width: 150px;
-        top: -15px;
-        left: 105px;
-        background: rgba(254, 213, 48, 1);
-        color: black;
-        padding: 15px;
-        gap: 25px;
-        border-radius: 5px;
-        z-index: 2;
-      }
-    }
-  }
-
-  // .menu__item
-  &__item {
-    transition: all 0.2s ease;
-
-    &:hover {
-      padding: 0 0 4px;
-      border-bottom: 4px solid $yellow;
-      font-weight: 700;
-      line-height: 24px;
-    }
-  }
-}
-
 .burger {
   display: none;
   position: relative;
@@ -53,7 +7,7 @@ $yellow: #fed530;
   height: 22px;
   z-index: 3;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 800px) {
     display: block;
   }
 

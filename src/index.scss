@@ -36,6 +36,9 @@ body {
 	color: white;
 }
 body {
+	padding-right: 0 !important;
+}
+body {
 	line-height: 1;
 	font-family: DM Sans;
 	-ms-text-size-adjust: 100%;
@@ -92,7 +95,7 @@ h6 {
 .container {
 	padding: 0 15px;
 	margin: 0 auto;
-	
+
 	@media (min-width: 1400px) {
 		max-width: 1260px;
 	}

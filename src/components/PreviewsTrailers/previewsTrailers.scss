@@ -1,3 +1,5 @@
+$yellow: #fed530;
+
 .trailers {
   position: relative;
   flex: 1 1 100%;
@@ -58,4 +60,15 @@
 
 .slick-list {
   padding: 30px;
+}
+
+.slick-dots li button:before {
+  color: $yellow;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: $yellow;
+  opacity: 1;
 }
