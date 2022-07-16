@@ -3,6 +3,10 @@ $yellow: #fed530;
 .menu {
   padding: 0 50px;
 
+  ul {
+        margin-bottom: 0;
+  }
+
   @media (max-width: 799.98px) {
     padding: 0;
   }
