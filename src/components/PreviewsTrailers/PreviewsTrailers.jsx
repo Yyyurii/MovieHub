@@ -26,22 +26,15 @@ const PreviewsTrailers = () => {
     swipeToSlide: true,
     beforeChange: (current, next) => setActiveSlide(next),
     responsive: [
+      // {
+      //   breakpoint: 900,
+      //   settings: {
+      //     slidesToShow: 2,
+      //     initialSlide: 1,
+      //   },
+      // },
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 2,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 640,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
         },
@@ -54,21 +47,30 @@ const PreviewsTrailers = () => {
       <p>Trailers</p>
       <div className="gallery">
         <Slider {...settings}>
-          <div className="gallery__item">
-            <span>01</span>
-            <img src={trailer1} alt="trailers" />
+          <div>
+            <div className="gallery__item">
+              <span>01</span>
+              <img src={trailer1} alt="trailers" />
+            </div>
           </div>
-          <div className="gallery__item">
-            <span>02</span>
-            <img src={trailer2} alt="trailers" />
+          <div>
+            <div className="gallery__item">
+              <span>02</span>
+              <img src={trailer2} alt="trailers" />
+            </div>
           </div>
-          <div className="gallery__item">
-            <span>03</span>
-            <img src={trailer3} alt="trailers" />
+          <div>
+            {" "}
+            <div className="gallery__item">
+              <span>03</span>
+              <img src={trailer3} alt="trailers" />
+            </div>
           </div>
-          <div className="gallery__item">
-            <span>04</span>
-            <img src={trailer4} alt="trailers" />
+          <div>
+            <div className="gallery__item">
+              <span>04</span>
+              <img src={trailer4} alt="trailers" />
+            </div>
           </div>
         </Slider>
       </div>

@@ -41,14 +41,24 @@ $yellow: #fed530;
     position: relative;
     transition: all 0.3s ease;
 
-    // &:hover {
-    //   transform: scale(1.05);
-    // }
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0 15px;
+
+    @media (max-width: 1023.98px) {
+      max-width: 246px;
+    }
+    @media (max-width: 899.98px) {
+      max-width: 206px;
+    }
+    @media (max-width: 767.98px) {
+      max-width: 296px;
+    }
 
     span {
       position: absolute;
       left: 24px;
-      bottom: -25px;
+      bottom: -10px;
     }
   }
 }
@@ -59,7 +69,7 @@ $yellow: #fed530;
 }
 
 .slick-list {
-  padding: 30px;
+  padding: 15px 0 20px;
 }
 
 .slick-dots li button:before {
