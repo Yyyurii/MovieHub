@@ -26,13 +26,6 @@ const PreviewsTrailers = () => {
     swipeToSlide: true,
     beforeChange: (current, next) => setActiveSlide(next),
     responsive: [
-      // {
-      //   breakpoint: 900,
-      //   settings: {
-      //     slidesToShow: 2,
-      //     initialSlide: 1,
-      //   },
-      // },
       {
         breakpoint: 768,
         settings: {
