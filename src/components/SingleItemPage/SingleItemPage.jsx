@@ -1,7 +1,7 @@
 import "./singleItemPage.scss";
 import world from "../../assets/images/previews/world.jpg";
-import img1 from "../../assets/images/previews/01.jpg";
 import Head from "../Head";
+import Footer from "../Footer/Footer";
 
 const SingleItemPage = () => {
   const styles = {
@@ -57,6 +57,7 @@ const SingleItemPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

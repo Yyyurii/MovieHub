@@ -1,5 +1,5 @@
 .single-page {
-  padding: 130px 0 0;
+  padding: 130px 0 20px;
   position: relative;
   min-height: 100vh;
 
@@ -86,7 +86,6 @@
     gap: 15px;
     align-items: center;
     padding-left: 0;
-    font-size: 20px;
     background: rgba(0, 0, 0, 0.8);
     padding: 15px 5px;
     border-radius: 5px;
@@ -95,7 +94,7 @@
     @media (max-width: 767.98px) {
       margin: 0;
       margin-bottom: 0;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
@@ -117,16 +116,15 @@
   }
 
   &__overview {
-    font-size: 20px;
-    line-height: 32px;
+    line-height: 30px;
     background: rgba(0, 0, 0, 0.8);
     padding: 15px 5px;
     border-radius: 5px;
     border: 1.5px solid white;
 
     @media (max-width: 767.98px) {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 18px;
     }
   }
 }

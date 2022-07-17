@@ -6,7 +6,6 @@ import Main from "../Main";
 import Header from "../Header";
 import SingleItemPage from "../SingleItemPage/SingleItemPage";
 
-
 const App = () => {
   return (
     <>
