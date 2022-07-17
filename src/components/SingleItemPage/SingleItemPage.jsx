@@ -1,5 +1,6 @@
 import "./singleItemPage.scss";
 import world from "../../assets/images/previews/world.jpg";
+import img1 from "../../assets/images/previews/01.jpg";
 import Head from "../Head";
 
 const SingleItemPage = () => {
@@ -20,19 +21,19 @@ const SingleItemPage = () => {
             <div className="single-page__left-column">
               <img className="single-page__poster" src={world} alt="poster" />
               <ul className="single-page__details-list">
-                <li className="single-page__list-item-name">Rating</li>
+                <li className="single-page__list-item-name">Rating:</li>
                 <li className="single-page__list-item-value">6.7</li>
-                <li className="single-page__list-item-name">Release date</li>
+                <li className="single-page__list-item-name">Release date:</li>
                 <li className="single-page__list-item-value">2022-08-10</li>
-                <li className="single-page__list-item-name">Country</li>
+                <li className="single-page__list-item-name">Country:</li>
                 <li className="single-page__list-item-value">
                   United states of America
                 </li>
-                <li className="single-page__list-item-name">Genre</li>
+                <li className="single-page__list-item-name">Genre:</li>
                 <li className="single-page__list-item-value">
                   Fantasy, advanture
                 </li>
-                <li className="single-page__list-item-name">Runtime</li>
+                <li className="single-page__list-item-name">Runtime:</li>
                 <li className="single-page__list-item-value">139 min</li>
               </ul>
             </div>

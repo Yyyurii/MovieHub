@@ -1,10 +1,12 @@
 .single-page {
   padding: 130px 0 0;
   position: relative;
+  min-height: 100vh;
 
   .container {
     position: relative;
     z-index: 1;
+    border-top: 1.5px solid white;
   }
 
   &__background-img {
@@ -13,16 +15,16 @@
     bottom: 0;
     left: 0;
     right: 0;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    height: 100vh;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    min-height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   &__background-color {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -33,20 +35,48 @@
   &__title {
     font-size: 36px;
     line-height: 48px;
-    margin: 0 0 20px;
+    margin: 20px 0 20px;
   }
 
   &__columns {
     display: flex;
     gap: 30px;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+      gap: 0;
+    }
   }
 
   &__left-column {
-    flex: 11 30%;
+    flex: 1 1 30%;
+
+    @media (max-width: 767.98px) {
+      display: flex;
+      gap: 15px;
+      margin: 0 0 15px;
+      justify-content: space-around;
+    }
+
+    @media (max-width: 479.98px) {
+      flex-direction: column;
+    }
   }
 
   &__poster {
-    max-width: 300px;
+    max-width: 100%;
+
+    @media (max-width: 767.98px) {
+      max-width: 200px;
+    }
+
+    @media (max-width: 479.98px) {
+      max-height: 350px;
+      max-width: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
   }
 
   &__details-list {
@@ -54,8 +84,19 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 15px;
+    align-items: center;
     padding-left: 0;
     font-size: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 5px;
+    border-radius: 5px;
+    border: 1.5px solid white;
+
+    @media (max-width: 767.98px) {
+      margin: 0;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
   }
 
   &__list-item-name {
@@ -70,13 +111,22 @@
 
   &__video {
     max-width: 100%;
-    height: 475px;
-    background-color: yellow;
+    height: 385px;
+    border: 3px solid white;
     margin: 0 0 20px;
   }
 
   &__overview {
     font-size: 20px;
     line-height: 32px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 5px;
+    border-radius: 5px;
+    border: 1.5px solid white;
+
+    @media (max-width: 767.98px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 }
