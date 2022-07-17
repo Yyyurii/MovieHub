@@ -4,15 +4,13 @@ import "../../assets/styles/icons.css";
 import Footer from "../Footer/Footer";
 import Main from "../Main";
 import Header from "../Header";
-import SingleItemPage from "../SingleItemPage/SingleItemPage";
 
 const App = () => {
   return (
     <>
-      {/* <Header />
+      <Header />
       <Main />
-      <Footer /> */}
-      <SingleItemPage />
+      <Footer />
     </>
   );
 };

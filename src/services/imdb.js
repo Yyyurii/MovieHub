@@ -1,6 +1,5 @@
 const key = "f352de76e35a775aebdd8d341fa300ff";
 const url = "https://api.themoviedb.org/3/";
-const fullUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f352de76e35a775aebdd8d341fa300ff&language=en-US&page=1`;
 
 const useImdb = () => {
   const getMostPopularMovies = async () => {

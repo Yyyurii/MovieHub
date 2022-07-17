@@ -1,7 +1,5 @@
 import "./singleItemPage.scss";
 import world from "../../assets/images/previews/world.jpg";
-import Head from "../Head";
-import Footer from "../Footer/Footer";
 
 const SingleItemPage = () => {
   const styles = {
@@ -10,7 +8,6 @@ const SingleItemPage = () => {
 
   return (
     <>
-      <Head />
       <div className="single-page">
         <div className="single-page__background-img" style={styles}>
           <div className="single-page__background-color"></div>
@@ -57,7 +54,6 @@ const SingleItemPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
