@@ -13,7 +13,7 @@ const TopicSectionItem = ({ details, wider }) => {
         <img src={imdb} alt="views" />
         <span>{rating}</span>
       </div>
-      <h1 className="card__title">{title}</h1>
+      <h1 title={title} className="card__title">{title}</h1>
     </a>
   );
 };
