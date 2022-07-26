@@ -6,6 +6,7 @@ import TopicSectionItem from "../TopicSectionItem/TopicSectionItem";
 import AppContext from "../../context";
 
 const TopicSectionItems = () => {
+
   const { mostPopularMovies } = useContext(AppContext);
 
   return (

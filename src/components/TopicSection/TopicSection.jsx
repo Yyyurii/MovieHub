@@ -2,13 +2,13 @@ import "./topicSection.scss";
 
 import TopicSectionItems from "../TopicSectionItems";
 import TopicSectionHeader from "../TopicSectionHeader";
-import Page404 from "../../pages/Page404/Page404";
+import RandomMovie from "../RandomMovie";
 
 const TopicSection = () => {
   return (
     <div className="topic-section">
       <div className="container">
-      <Page404 />
+      <RandomMovie />
         <TopicSectionHeader />
         <TopicSectionItems />
       </div>
