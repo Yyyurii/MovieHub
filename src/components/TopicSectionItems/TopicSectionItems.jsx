@@ -1,27 +1,20 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 
 import "./topicSectionItems.scss";
 
 import TopicSectionItem from "../TopicSectionItem/TopicSectionItem";
-import useImdb from "../../services/imdb";
+import AppContext from "../../context";
 
 const TopicSectionItems = () => {
-  const [mostPopularMovies, setMostPopularMovies] = useState([]);
-
-  useEffect(() => {
-    getMostPopularMoviesList();
-  }, []);
-
-  const { getMostPopularMovies } = useImdb();
-
-  const getMostPopularMoviesList = () => {
-    getMostPopularMovies().then((res) => setMostPopularMovies(res));
-  };
+  const { mostPopularMovies } = useContext(AppContext);
 
   return (
     <div className="topic-section-items">
       {mostPopularMovies.map((item, index) => {
-        if(index < 7) return <TopicSectionItem key={item.id} details={item} wider={index} />;
+        if (index < 7)
+          return (
+            <TopicSectionItem key={item.id} details={item} wider={index} />
+          );
       })}
     </div>
   );
