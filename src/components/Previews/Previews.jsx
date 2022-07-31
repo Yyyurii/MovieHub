@@ -1,13 +1,24 @@
 import "./previews.scss";
 import triangle from "../../assets/images/icon/triangle.svg";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import PreviewsDescription from "../PreviewsDescription/PreviewsDescription";
 import PreviewsTrailers from "../PreviewsTrailers";
 
-const Previews = () => {
+const Previews = ({ data }) => {
   const [backgroundSrc, setBackgroundSrc] = useState("");
+  const [nowPlayingMoview, setNowPlayingMoview] = useState([]);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    filterMovies();
+  }, [data]);
+
+  const filterMovies = () => {
+    const movies = data.slice(0, 9);
+    setNowPlayingMoview(movies);
+  };
 
   const setImgSrc = (src) => {
     setBackgroundSrc(src);
@@ -16,7 +27,11 @@ const Previews = () => {
   return (
     <div className="previews-container">
       <div className="container">
-        <img className="previews-main-img" src={backgroundSrc} alt="main poster" />
+        <img
+          className="previews-main-img"
+          src={backgroundSrc}
+          alt="main poster"
+        />
         <div className="previews">
           <div className="play-btn">
             <div className="play-btn__wrap-circle">
@@ -25,8 +40,12 @@ const Previews = () => {
               </div>
             </div>
           </div>
-          <PreviewsDescription />
-          <PreviewsTrailers setImgSrc={setImgSrc} />
+          <PreviewsDescription movie={nowPlayingMoview[activeSlide]} />
+          <PreviewsTrailers
+            setImgSrc={setImgSrc}
+            movies={nowPlayingMoview}
+            setActiveSlide={setActiveSlide}
+          />
         </div>
       </div>
     </div>

@@ -1,22 +1,33 @@
 import "./previewsDescription.scss";
+import { useState, useEffect } from "react";
 
-const PreviewsDescription = () => {
+const PreviewsDescription = ({ movie }) => {
+  const [description, setDescription] = useState({});
+
+  useEffect(() => {
+    if(movie) setDescription(movie);
+  }, [movie]);
+
+  const renderDesc = (descript) => {
+    return (
+      <>
+        <div className="description__title">{descript.title}</div>
+        <div className="description__subtitle">{descript.overview}</div>
+        <div className="description__details">
+          Genre : {descript.genre}
+          <br />
+          Rating : {descript.rating}
+          <br />
+        </div>
+      </>
+    );
+  };
+
+  const desc = renderDesc(description);
+
   return (
     <div className="description">
-      <div className="description__title">The Legend of Sunrise</div>
-      <div className="description__subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam.
-      </div>
-      <div className="description__details">
-        Genre : Adventure
-        <br />
-        Duration : 2 hr 45 mins
-        <br />
-        Ratings : 4.5
-        <br />
-      </div>
+      {desc}
     </div>
   );
 };

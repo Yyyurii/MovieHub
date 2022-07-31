@@ -29,9 +29,9 @@ const App = () => {
 
   return (
     <>
-      <AppContext.Provider value={{ mostPopularMovies, nowPlayingMovies }}>
+      <AppContext.Provider value={{ mostPopularMovies }}>
         <Head />
-        <Previews />
+        <Previews data={nowPlayingMovies} />
         <Main />
         <Footer />
       </AppContext.Provider>

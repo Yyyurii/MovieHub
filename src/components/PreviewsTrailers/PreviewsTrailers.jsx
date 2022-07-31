@@ -4,17 +4,33 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./previewsTrailers.scss";
-import trailer1 from "../../assets/images/previews/01.jpg";
-import trailer2 from "../../assets/images/previews/02.jpg";
-import trailer3 from "../../assets/images/previews/03.jpg";
-import trailer4 from "../../assets/images/previews/04.jpg";
 
-const PreviewsTrailers = ({ setImgSrc }) => {
-  const [activeSlide, setActiveSlide] = useState(0);
-
+const PreviewsTrailers = ({ setImgSrc, movies, setActiveSlide }) => {
   useEffect(() => {
-    setImgSrc(trailer1);
-  }, []);
+    if (movies) {
+      movies.forEach((item, index) => index === 0 ? setImgSrc(item.imgPath) : null);
+    }
+  }, [movies]);
+
+  const renderMovies = (moviesList) => {
+    const list = moviesList.map((item, index) => {
+      return (
+        <div key={item.id}>
+          <div
+            className="gallery__item"
+            onClick={() => setImgSrc(item.imgPath)}
+          >
+            <span>{`${index + 1}`}</span>
+            <img src={item.imgPath} alt="trailers" />
+          </div>
+        </div>
+      );
+    });
+
+    return list;
+  };
+
+  const moviesList = renderMovies(movies);
 
   const settings = {
     className: "center",
@@ -24,7 +40,7 @@ const PreviewsTrailers = ({ setImgSrc }) => {
     slidesToShow: 3,
     speed: 500,
     focusOnSelect: true,
-    dots: true,
+    dots: false,
     swipeToSlide: true,
     beforeChange: (current, next) => setActiveSlide(next),
     responsive: [
@@ -41,33 +57,7 @@ const PreviewsTrailers = ({ setImgSrc }) => {
     <div className="trailers">
       <p>Trailers</p>
       <div className="gallery">
-        <Slider {...settings}>
-          <div>
-            <div className="gallery__item" onClick={() => setImgSrc(trailer1)}>
-              <span>01</span>
-              <img src={trailer1} alt="trailers" />
-            </div>
-          </div>
-          <div>
-            <div className="gallery__item" onClick={() => setImgSrc(trailer2)}>
-              <span>02</span>
-              <img src={trailer2} alt="trailers" />
-            </div>
-          </div>
-          <div>
-            {" "}
-            <div className="gallery__item" onClick={() => setImgSrc(trailer3)}>
-              <span>03</span>
-              <img src={trailer3} alt="trailers" />
-            </div>
-          </div>
-          <div>
-            <div className="gallery__item" onClick={() => setImgSrc(trailer4)}>
-              <span>04</span>
-              <img src={trailer4} alt="trailers" />
-            </div>
-          </div>
-        </Slider>
+        <Slider {...settings}>{moviesList}</Slider>
       </div>
     </div>
   );
