@@ -1,6 +1,7 @@
 .random-movie {
   display: flex;
   flex-direction: column;
+  margin: 56px 0;
 
   &__title {
     font-weight: 500;
@@ -25,11 +26,19 @@
     margin: 30px 0;
   }
 
+  &__details-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__movie-title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
   &__img {
     max-width: 236px;
   }
-
-  // .random-movie__information
 
   &__information {
     margin: 20px 0;
@@ -37,16 +46,6 @@
     grid-template-columns: 1fr 2fr;
     gap: 15px;
     padding: 15px 5px;
-  }
-
-  // .random-movie__list-item-name
-
-  &__list-item-name {
-  }
-
-  // .random-movie__list-item-value
-
-  &__list-item-value {
   }
 
   &__btn {

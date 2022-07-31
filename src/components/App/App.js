@@ -10,20 +10,26 @@ import AppContext from "../../context";
 
 const App = () => {
   const [mostPopularMovies, setMostPopularMovies] = useState([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
 
   useEffect(() => {
     getMostPopularMoviesList();
+    getNowPlayingMoviesList();
   }, []);
 
-  const { getMostPopularMovies } = useImdb();
+  const { getMostPopularMovies, getNowPlayingMovies } = useImdb();
 
   const getMostPopularMoviesList = () => {
     getMostPopularMovies().then((res) => setMostPopularMovies(res));
   };
 
+  const getNowPlayingMoviesList = () => {
+    getNowPlayingMovies().then((res) => setNowPlayingMovies(res));
+  };
+
   return (
     <>
-      <AppContext.Provider value={{ mostPopularMovies }}>
+      <AppContext.Provider value={{ mostPopularMovies, nowPlayingMovies }}>
         <Head />
         <Previews />
         <Main />

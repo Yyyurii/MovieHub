@@ -15,6 +15,19 @@ const useImdb = () => {
     return data.results.map(_transform);
   };
 
+  const getNowPlayingMovies = async () => {
+    const response = await fetch(
+      `${url}movie/now_playing?api_key=${key}&language=en-US&page=1`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.results.map(_transform);
+  };
+
   const _transform = (data) => {
     const movieGenre = {
       10402: "Music",
@@ -35,19 +48,19 @@ const useImdb = () => {
       80: "Crime",
       878: "Science Fiction",
       9648: "Mystery",
-      99: "Documentary"
+      99: "Documentary",
     };
 
     const genre = () => {
       let genre = data.genre_ids;
       let genreArr = [];
-      if(genre.length > 0) {
-        genre.forEach(item => {
+      if (genre.length > 0) {
+        genre.forEach((item) => {
           genreArr.push(movieGenre[item]);
-        })
+        });
       }
       return genreArr;
-    }
+    };
 
     return {
       id: data.id,
@@ -55,10 +68,10 @@ const useImdb = () => {
       rating: data.vote_average,
       imgPath: `https://image.tmdb.org/t/p/w500${data.backdrop_path}`,
       genre: genre(),
-      overview: data.overview
+      overview: data.overview,
     };
   };
 
-  return { getMostPopularMovies };
+  return { getMostPopularMovies, getNowPlayingMovies };
 };
 export default useImdb;

@@ -13,8 +13,8 @@ const PreviewsTrailers = ({ setImgSrc }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
-    setImgSrc(trailer1)
-  }, [])
+    setImgSrc(trailer1);
+  }, []);
 
   const settings = {
     className: "center",
