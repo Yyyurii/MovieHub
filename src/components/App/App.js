@@ -1,19 +1,25 @@
 import "./app.scss";
 import "../../assets/styles/icons.css";
 import { useState, useEffect } from "react";
-import Footer from "../Footer/Footer";
-import Head from "../Head";
-import Previews from "../Previews";
-import TopicSection from "../TopicSection";
-import RandomMovie from "../RandomMovie";
+import { Routes, Route } from "react-router-dom";
 import useImdb from "../../services/imdb";
 import AppContext from "../../context";
+
+import Footer from "../Footer/Footer";
+import Head from "../Head";
+import {
+  Page404,
+  MainPage,
+  SingleItemPage,
+  TopicSectionFullContentPage,
+} from "../../pages";
 
 const App = () => {
   const [mostPopularMovies, setMostPopularMovies] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [popularTV, setPopularTV] = useState([]);
   const [randomMovie, setRandomMovie] = useState([]);
+  const [singleItemsDetails, setSingleItemsDetails] = useState({});
 
   useEffect(() => {
     getMostPopularMoviesList();
@@ -22,7 +28,14 @@ const App = () => {
     getRandomFilm();
   }, []);
 
-  const { getMostPopularMovies, getNowPlayingMovies, getPopularTV, getRandomMovie } = useImdb();
+  const {
+    getMostPopularMovies,
+    getNowPlayingMovies,
+    getPopularTV,
+    getRandomMovie,
+    getMoviebyId,
+    getTVbyId
+  } = useImdb();
 
   const getMostPopularMoviesList = () => {
     getMostPopularMovies().then((res) => setMostPopularMovies(res));
@@ -40,14 +53,39 @@ const App = () => {
     getRandomMovie().then((res) => setRandomMovie(res));
   };
 
+  const getFilmOnClick = (singleItemId) => {
+    getMoviebyId(singleItemId).then((res) => setSingleItemsDetails(res));
+  };
+
+  const getTVOnClick = (singleItemId) => {
+    getTVbyId(singleItemId).then((res) => setSingleItemsDetails(res));
+  };
+
   return (
     <>
-      <AppContext.Provider>
+      <AppContext.Provider value={{ getFilmOnClick, getTVOnClick, singleItemsDetails }}>
         <Head />
-        <Previews data={nowPlayingMovies} />
-        <TopicSection itemsList={mostPopularMovies} title='The Most Popular Movies'/>
-        <TopicSection itemsList={popularTV} title='The Most Popular TV Shows'/>
-        <RandomMovie randomMovie={randomMovie} getRandomFilm={getRandomFilm} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MainPage
+                data={nowPlayingMovies}
+                movieItemList={mostPopularMovies}
+                movieTitle="The Most Popular Movies"
+                TVItemList={popularTV}
+                TVtitle="The Most Popular TV Shows"
+                randomMovie={randomMovie}
+                getRandomFilm={getRandomFilm}
+              />
+            }
+          />
+          <Route path="movies" element={<TopicSectionFullContentPage itemsList={mostPopularMovies} />}/>
+          <Route path="movies/:movieTitle" element={<SingleItemPage isMovie={true}/>} />
+          <Route path="tv-shows" element={<TopicSectionFullContentPage itemsList={popularTV} />}/>
+          <Route path="tv-shows/:movieTitle" element={<SingleItemPage isMovie={false}/>} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
         <Footer />
       </AppContext.Provider>
     </>

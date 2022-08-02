@@ -17,7 +17,20 @@ const useImdb = () => {
 
   const getRandomMovie = async () => {
     const response = await fetch(
-      `${url}movie/${Math.floor(Math.random() * 50000)}?api_key=${key}&language=en-US&page=${Math.floor(Math.random() * 10)}`
+      `${url}movie/${Math.floor(Math.random() * 50000)}?api_key=${key}&language=en-US`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  };
+
+  const getMoviebyId = async (id) => {
+    const response = await fetch(
+      `${url}movie/${id}?api_key=${key}&language=en-US`
     );
 
     if (!response.ok) {
@@ -52,6 +65,19 @@ const useImdb = () => {
 
     const data = await response.json();
     return data.results.map(_transform);
+  };
+
+  const getTVbyId = async (id) => {
+    const response = await fetch(
+      `${url}tv/${id}?api_key=${key}&language=en-US`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
   };
 
   const _transform = (data) => {
@@ -109,6 +135,6 @@ const useImdb = () => {
     };
   };
 
-  return { getMostPopularMovies, getNowPlayingMovies, getPopularTV, getRandomMovie };
+  return { getMostPopularMovies, getNowPlayingMovies, getPopularTV, getRandomMovie, getMoviebyId, getTVbyId };
 };
 export default useImdb;
