@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <>
-      <AppContext.Provider value={{ mostPopularMovies }}>
+      <AppContext.Provider>
         <Head />
         <Previews data={nowPlayingMovies} />
         <TopicSection itemsList={mostPopularMovies} title='The Most Popular Movies'/>

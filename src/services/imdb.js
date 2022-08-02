@@ -2,9 +2,9 @@ const key = "f352de76e35a775aebdd8d341fa300ff";
 const url = "https://api.themoviedb.org/3/";
 
 const useImdb = () => {
-  const getMostPopularMovies = async () => {
+  const getMostPopularMovies = async (page = 1) => {
     const response = await fetch(
-      `${url}movie/popular?api_key=${key}&language=en-US&page=1`
+      `${url}movie/popular?api_key=${key}&language=en-US&page=${page}`
     );
 
     if (!response.ok) {
@@ -41,9 +41,9 @@ const useImdb = () => {
     return data.results.map(_transform);
   };
 
-  const getPopularTV = async () => {
+  const getPopularTV = async (page = 1) => {
     const response = await fetch(
-      `${url}tv/popular?api_key=${key}&language=en-US&page=1`
+      `${url}tv/popular?api_key=${key}&language=en-US&page=${page}`
     );
 
     if (!response.ok) {
