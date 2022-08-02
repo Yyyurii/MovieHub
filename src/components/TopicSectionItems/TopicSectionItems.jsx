@@ -2,11 +2,11 @@ import "./topicSectionItems.scss";
 
 import TopicSectionItem from "../TopicSectionItem/TopicSectionItem";
 
-const TopicSectionItems = ({movies}) => {
+const TopicSectionItems = ({itemsList}) => {
 
   return (
     <div className="topic-section-items">
-      {movies.map((item, index) => {
+      {itemsList.map((item, index) => {
         if (index < 7)
           return (
             <TopicSectionItem key={item.id} details={item} wider={index} />

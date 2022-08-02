@@ -3,12 +3,12 @@ import "./topicSection.scss";
 import TopicSectionItems from "../TopicSectionItems";
 import TopicSectionHeader from "../TopicSectionHeader";
 
-const TopicSection = ({movies}) => {
+const TopicSection = ({itemsList, title}) => {
   return (
     <div className="topic-section">
       <div className="container">
-        <TopicSectionHeader />
-        <TopicSectionItems movies={movies}/>
+        <TopicSectionHeader title={title} />
+        <TopicSectionItems itemsList={itemsList}/>
       </div>
     </div>
   );

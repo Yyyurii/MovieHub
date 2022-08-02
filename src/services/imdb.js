@@ -28,13 +28,21 @@ const useImdb = () => {
     return data.results.map(_transform);
   };
 
+  const getPopularTV = async () => {
+    const response = await fetch(
+      `${url}tv/popular?api_key=${key}&language=en-US&page=1`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.results.map(_transform);
+  };
+
   const _transform = (data) => {
-    const movieGenre = {
-      10402: "Music",
-      10749: "Romance",
-      10751: "Family",
-      10752: "War",
-      10770: "TV Movie",
+    const genres = {
       12: "Adventure",
       14: "Fantasy",
       16: "Animation",
@@ -46,17 +54,31 @@ const useImdb = () => {
       37: "Western",
       53: "Thriller",
       80: "Crime",
+      99: "Documentary",
       878: "Science Fiction",
       9648: "Mystery",
-      99: "Documentary",
+      10402: "Music",
+      10749: "Romance",
+      10751: "Family",
+      10752: "War",
+      10759: "Action & Adventure",
+      10762: "Kids",
+      10763: "News",
+      10764: "Reality",
+      10770: "TV Movie", 
+      10765: "Sci-Fi & Fantasy",
+      10766: "Soap",
+      10767: "Talk",
+      10768: "War & Politics",
     };
+
 
     const genre = () => {
       let genre = data.genre_ids;
       let genreArr = [];
       if (genre.length > 0) {
         genre.forEach((item) => {
-          genreArr.push(movieGenre[item]);
+          genreArr.push(genres[item]);
         });
       }
       return genreArr;
@@ -65,6 +87,7 @@ const useImdb = () => {
     return {
       id: data.id,
       title: data.title,
+      name: data.name,
       rating: data.vote_average,
       imgPath: `https://image.tmdb.org/t/p/w500${data.backdrop_path}`,
       genre: genre(),
@@ -72,6 +95,6 @@ const useImdb = () => {
     };
   };
 
-  return { getMostPopularMovies, getNowPlayingMovies };
+  return { getMostPopularMovies, getNowPlayingMovies, getPopularTV };
 };
 export default useImdb;
