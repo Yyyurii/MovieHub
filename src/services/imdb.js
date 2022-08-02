@@ -15,6 +15,19 @@ const useImdb = () => {
     return data.results.map(_transform);
   };
 
+  const getRandomMovie = async () => {
+    const response = await fetch(
+      `${url}movie/${Math.floor(Math.random() * 50000)}?api_key=${key}&language=en-US&page=${Math.floor(Math.random() * 10)}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  };
+
   const getNowPlayingMovies = async () => {
     const response = await fetch(
       `${url}movie/now_playing?api_key=${key}&language=en-US&page=1`
@@ -92,9 +105,10 @@ const useImdb = () => {
       imgPath: `https://image.tmdb.org/t/p/w500${data.backdrop_path}`,
       genre: genre(),
       overview: data.overview,
+      releaseDate: data.release_date
     };
   };
 
-  return { getMostPopularMovies, getNowPlayingMovies, getPopularTV };
+  return { getMostPopularMovies, getNowPlayingMovies, getPopularTV, getRandomMovie };
 };
 export default useImdb;

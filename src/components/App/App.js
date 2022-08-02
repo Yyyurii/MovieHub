@@ -13,14 +13,16 @@ const App = () => {
   const [mostPopularMovies, setMostPopularMovies] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [popularTV, setPopularTV] = useState([]);
+  const [randomMovie, setRandomMovie] = useState([]);
 
   useEffect(() => {
     getMostPopularMoviesList();
     getNowPlayingMoviesList();
     getPopularTVList();
+    getRandomFilm();
   }, []);
 
-  const { getMostPopularMovies, getNowPlayingMovies, getPopularTV } = useImdb();
+  const { getMostPopularMovies, getNowPlayingMovies, getPopularTV, getRandomMovie } = useImdb();
 
   const getMostPopularMoviesList = () => {
     getMostPopularMovies().then((res) => setMostPopularMovies(res));
@@ -34,6 +36,10 @@ const App = () => {
     getPopularTV().then((res) => setPopularTV(res));
   };
 
+  const getRandomFilm = () => {
+    getRandomMovie().then((res) => setRandomMovie(res));
+  };
+
   return (
     <>
       <AppContext.Provider value={{ mostPopularMovies }}>
@@ -41,7 +47,7 @@ const App = () => {
         <Previews data={nowPlayingMovies} />
         <TopicSection itemsList={mostPopularMovies} title='The Most Popular Movies'/>
         <TopicSection itemsList={popularTV} title='The Most Popular TV Shows'/>
-        <RandomMovie />
+        <RandomMovie randomMovie={randomMovie} getRandomFilm={getRandomFilm} />
         <Footer />
       </AppContext.Provider>
     </>
