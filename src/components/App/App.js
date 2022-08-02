@@ -2,9 +2,10 @@ import "./app.scss";
 import "../../assets/styles/icons.css";
 import { useState, useEffect } from "react";
 import Footer from "../Footer/Footer";
-import Main from "../Main";
 import Head from "../Head";
 import Previews from "../Previews";
+import TopicSection from "../TopicSection";
+import RandomMovie from "../RandomMovie";
 import useImdb from "../../services/imdb";
 import AppContext from "../../context";
 
@@ -32,7 +33,8 @@ const App = () => {
       <AppContext.Provider value={{ mostPopularMovies }}>
         <Head />
         <Previews data={nowPlayingMovies} />
-        <Main />
+        <TopicSection movies={mostPopularMovies} title='The Most Popular Movies'/>
+        <RandomMovie />
         <Footer />
       </AppContext.Provider>
     </>

@@ -1,10 +1,10 @@
 import "./topicSectionHeader.scss";
 
-const TopicSectionHeader = () => {
+const TopicSectionHeader = ({title}) => {
   return (
     <div className="topic-section__header">
       <a href="/" className="topic-section__title">
-        The Most Popular Movies
+        {title}
       </a>
       <button>View More</button>
     </div>
