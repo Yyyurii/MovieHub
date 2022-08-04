@@ -82,7 +82,7 @@ $yellow: #fed530;
 
   &__title {
     font-weight: 700;
-    font-size: 36px;
+    font-size: 24px;
     line-height: 64px;
     margin: 10px 0 0;
     overflow: hidden;
@@ -90,12 +90,7 @@ $yellow: #fed530;
     text-overflow: ellipsis;
 
     @media (max-width: 1400px) {
-      font-size: 24px;
-      line-height: 36px;
-    }
-
-    @media (max-width: 479.98px) {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 24px;
     }
   }

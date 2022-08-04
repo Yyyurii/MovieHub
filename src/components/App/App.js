@@ -26,7 +26,7 @@ const App = () => {
     getMostPopularMoviesList();
     getNowPlayingMoviesList();
     getPopularTVList();
-    getRandomFilm();
+    // getRandomFilm();
   }, []);
 
   const {
@@ -35,11 +35,11 @@ const App = () => {
     getPopularTV,
     getRandomMovie,
     getMoviebyId,
-    getTVbyId
+    getTVbyId,
   } = useImdb();
 
-  const getMostPopularMoviesList = () => {
-    getMostPopularMovies().then((res) => setMostPopularMovies(res));
+  const getMostPopularMoviesList = (page) => {
+    getMostPopularMovies(page).then((res) => setMostPopularMovies(res));
   };
 
   const getNowPlayingMoviesList = () => {
@@ -64,7 +64,17 @@ const App = () => {
 
   return (
     <>
-      <AppContext.Provider value={{ getFilmOnClick, getTVOnClick, singleItemsDetails }}>
+      <AppContext.Provider
+        value={{
+          getFilmOnClick,
+          getTVOnClick,
+          singleItemsDetails,
+          getMostPopularMovies,
+          setMostPopularMovies,
+          getPopularTV,
+          setPopularTV
+        }}
+      >
         <Head />
         <Routes>
           <Route
@@ -81,10 +91,18 @@ const App = () => {
               />
             }
           />
-          <Route path="movies" element={<TopicSectionFullContentPage itemsList={mostPopularMovies} />}/>
-          <Route path="movies/:movieTitle" element={<SingleItemPage isMovie={true}/>} />
-          <Route path="tv-shows" element={<TopicSectionFullContentPage itemsList={popularTV} />}/>
-          <Route path="tv-shows/:movieTitle" element={<SingleItemPage isMovie={false}/>} />
+          <Route
+            path="/movies"
+            element={
+              <TopicSectionFullContentPage itemsList={mostPopularMovies} isMovie={true}/>
+            }
+          />
+          <Route path="/movies/:movieTitle" element={<SingleItemPage isMovie={true}/>} />
+          <Route
+            path="/tv-shows"
+            element={<TopicSectionFullContentPage itemsList={popularTV} isMovie={false} />}
+          />
+          <Route path="/tv-shows/:TVTitle" element={<SingleItemPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />
