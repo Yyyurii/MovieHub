@@ -13,6 +13,7 @@ import {
   SingleItemPage,
   TopicSectionFullContentPage,
 } from "../../pages";
+import Loader from "../Loader";
 
 const App = () => {
   const [mostPopularMovies, setMostPopularMovies] = useState([]);
