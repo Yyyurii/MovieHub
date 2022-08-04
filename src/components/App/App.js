@@ -21,12 +21,14 @@ const App = () => {
   const [popularTV, setPopularTV] = useState([]);
   const [randomMovie, setRandomMovie] = useState([]);
   const [singleItemsDetails, setSingleItemsDetails] = useState({});
+  const [video, setVideo] = useState({});
 
   useEffect(() => {
     getMostPopularMoviesList();
     getNowPlayingMoviesList();
     getPopularTVList();
     // getRandomFilm();
+    // getMovieVideo(616037);
   }, []);
 
   const {
@@ -36,6 +38,7 @@ const App = () => {
     getRandomMovie,
     getMoviebyId,
     getTVbyId,
+    getVideoForMovie
   } = useImdb();
 
   const getMostPopularMoviesList = (page) => {
@@ -61,6 +64,10 @@ const App = () => {
   const getTVOnClick = (singleItemId) => {
     getTVbyId(singleItemId).then((res) => setSingleItemsDetails(res));
   };
+
+  const getMovieVideo = (id) => {
+    getVideoForMovie(id).then(res => setVideo(res));
+  }
 
   return (
     <>

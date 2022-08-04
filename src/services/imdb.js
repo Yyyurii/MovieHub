@@ -17,7 +17,9 @@ const useImdb = () => {
 
   const getRandomMovie = async () => {
     const response = await fetch(
-      `${url}movie/${Math.floor(Math.random() * 50000)}?api_key=${key}&language=en-US`
+      `${url}movie/${Math.floor(
+        Math.random() * 50000
+      )}?api_key=${key}&language=en-US`
     );
 
     if (!response.ok) {
@@ -52,6 +54,19 @@ const useImdb = () => {
 
     const data = await response.json();
     return data.results.map(_transform);
+  };
+
+  const getVideoForMovie = async (id) => {
+    const response = await fetch(
+      `${url}movie/${id}/videos?api_key=${key}&language=en-US`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
   };
 
   const getPopularTV = async (page = 1) => {
@@ -104,13 +119,12 @@ const useImdb = () => {
       10762: "Kids",
       10763: "News",
       10764: "Reality",
-      10770: "TV Movie", 
+      10770: "TV Movie",
       10765: "Sci-Fi & Fantasy",
       10766: "Soap",
       10767: "Talk",
       10768: "War & Politics",
     };
-
 
     const genre = () => {
       let genre = data.genre_ids;
@@ -131,10 +145,18 @@ const useImdb = () => {
       imgPath: `https://image.tmdb.org/t/p/w500${data.backdrop_path}`,
       genre: genre(),
       overview: data.overview,
-      releaseDate: data.release_date
+      releaseDate: data.release_date,
     };
   };
 
-  return { getMostPopularMovies, getNowPlayingMovies, getPopularTV, getRandomMovie, getMoviebyId, getTVbyId };
+  return {
+    getMostPopularMovies,
+    getNowPlayingMovies,
+    getPopularTV,
+    getRandomMovie,
+    getMoviebyId,
+    getTVbyId,
+    getVideoForMovie,
+  };
 };
 export default useImdb;

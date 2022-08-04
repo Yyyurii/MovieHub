@@ -14,8 +14,8 @@ export const MainPage = ({
   return (
     <>
       <Previews data={data} />
-      <TopicSection itemsList={movieItemList} title={movieTitle} isMovie={true}/>
-      <TopicSection itemsList={TVItemList} title={TVtitle} isMovie={false}/>
+      <TopicSection itemsList={movieItemList} title={movieTitle} isMovie={true} />
+      <TopicSection itemsList={TVItemList} title={TVtitle} isMovie={false} />
       {/* <RandomMovie randomMovie={randomMovie} getRandomFilm={getRandomFilm} /> */}
     </>
   );
