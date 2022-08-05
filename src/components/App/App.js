@@ -28,7 +28,7 @@ const App = () => {
     getNowPlayingMoviesList();
     getPopularTVList();
     // getRandomFilm();
-    // getMovieVideo(616037);
+    // getMovieVideo(616037)
   }, []);
 
   const {
@@ -38,7 +38,6 @@ const App = () => {
     getRandomMovie,
     getMoviebyId,
     getTVbyId,
-    getVideoForMovie,
   } = useImdb();
 
   const getMostPopularMoviesList = (page) => {
@@ -65,9 +64,7 @@ const App = () => {
     getTVbyId(singleItemId).then((res) => setSingleItemsDetails(res));
   };
 
-  const getMovieVideo = (id) => {
-    getVideoForMovie(id).then((res) => setVideo(res));
-  };
+  
 
   return (
     <>

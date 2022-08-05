@@ -1,98 +1,60 @@
+import { useHttp } from "../hooks/http.hook";
+
 const key = "f352de76e35a775aebdd8d341fa300ff";
 const url = "https://api.themoviedb.org/3/";
 
 const useImdb = () => {
+  const { loading, error, request, clearError } = useHttp();
+
   const getMostPopularMovies = async (page = 1) => {
-    const response = await fetch(
+    const response = await request(
       `${url}movie/popular?api_key=${key}&language=en-US&page=${page}`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.results.map(_transform);
+    return response.results.map(_transform);
   };
 
   const getRandomMovie = async () => {
-    const response = await fetch(
+    const response = await request(
       `${url}movie/${Math.floor(
         Math.random() * 50000
       )}?api_key=${key}&language=en-US`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
+    return response;
   };
 
   const getMoviebyId = async (id) => {
-    const response = await fetch(
+    const response = await request(
       `${url}movie/${id}?api_key=${key}&language=en-US`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
+    return response;
   };
 
   const getNowPlayingMovies = async () => {
-    const response = await fetch(
+    const response = await request(
       `${url}movie/now_playing?api_key=${key}&language=en-US&page=1`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.results.map(_transform);
+    return response.results.map(_transform);
   };
 
   const getVideoForMovie = async (id) => {
-    const response = await fetch(
+    const response = await request(
       `${url}movie/${id}/videos?api_key=${key}&language=en-US`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
+    return response;
   };
 
   const getPopularTV = async (page = 1) => {
-    const response = await fetch(
+    const response = await request(
       `${url}tv/popular?api_key=${key}&language=en-US&page=${page}`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.results.map(_transform);
+    return response.results.map(_transform);
   };
 
   const getTVbyId = async (id) => {
-    const response = await fetch(
+    const response = await request(
       `${url}tv/${id}?api_key=${key}&language=en-US`
     );
-
-    if (!response.ok) {
-      throw new Error(`Could not fetch, status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
+    return response;
   };
 
   const _transform = (data) => {
@@ -150,6 +112,9 @@ const useImdb = () => {
   };
 
   return {
+    loading,
+    error,
+    clearError,
     getMostPopularMovies,
     getNowPlayingMovies,
     getPopularTV,
