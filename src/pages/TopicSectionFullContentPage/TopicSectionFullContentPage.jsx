@@ -18,7 +18,7 @@ const TopicSectionFullContentPage = ({ itemsList, isMovie }) => {
       <div className="container">
         <div className="topic-section-items">
           {itemsList.map((item, index) => (
-            <TopicSectionItem key={item.id} details={item} />
+            <TopicSectionItem key={item.id} details={item} isMovie={isMovie} />
           ))}
         </div>
       </div>

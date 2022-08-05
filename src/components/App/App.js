@@ -38,7 +38,7 @@ const App = () => {
     getRandomMovie,
     getMoviebyId,
     getTVbyId,
-    getVideoForMovie
+    getVideoForMovie,
   } = useImdb();
 
   const getMostPopularMoviesList = (page) => {
@@ -66,8 +66,8 @@ const App = () => {
   };
 
   const getMovieVideo = (id) => {
-    getVideoForMovie(id).then(res => setVideo(res));
-  }
+    getVideoForMovie(id).then((res) => setVideo(res));
+  };
 
   return (
     <>
@@ -79,7 +79,7 @@ const App = () => {
           getMostPopularMovies,
           setMostPopularMovies,
           getPopularTV,
-          setPopularTV
+          setPopularTV,
         }}
       >
         <Head />
@@ -101,15 +101,28 @@ const App = () => {
           <Route
             path="/movies"
             element={
-              <TopicSectionFullContentPage itemsList={mostPopularMovies} isMovie={true}/>
+              <TopicSectionFullContentPage
+                itemsList={mostPopularMovies}
+                isMovie={true}
+              />
             }
           />
-          <Route path="/movies/:movieTitle" element={<SingleItemPage isMovie={true}/>} />
+          <Route
+            path="/movies/:movieTitle"
+            element={<SingleItemPage isMovie={true} />}
+          />
+
           <Route
             path="/tv-shows"
-            element={<TopicSectionFullContentPage itemsList={popularTV} isMovie={false} />}
+            element={
+              <TopicSectionFullContentPage
+                itemsList={popularTV}
+                isMovie={false}
+              />
+            }
           />
           <Route path="/tv-shows/:TVTitle" element={<SingleItemPage />} />
+
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />

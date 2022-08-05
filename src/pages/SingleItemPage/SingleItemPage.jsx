@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import AppContext from "../../context";
 
-const SingleItemPage = ({isMovie}) => {
+const SingleItemPage = ({ isMovie }) => {
   const { singleItemsDetails } = useContext(AppContext);
   console.log(singleItemsDetails);
 
@@ -17,7 +17,8 @@ const SingleItemPage = ({isMovie}) => {
     runtime,
     overview,
     vote_average,
-    first_air_date
+    first_air_date,
+    episode_run_time
   } = singleItemsDetails;
 
   const genreArr = genres ? genres.map(item => item.name).toString() : 'Genre';
@@ -42,22 +43,18 @@ const SingleItemPage = ({isMovie}) => {
                 <li className="single-page__list-item-value">{vote_average}</li>
                 <li className="single-page__list-item-name">Release date:</li>
                 <li className="single-page__list-item-value">{isMovie ? release_date : first_air_date}</li>
-                {/* <li className="single-page__list-item-name">Country:</li>
-                <li className="single-page__list-item-value">
-                  United states of America
-                </li> */}
                 <li className="single-page__list-item-name">Genre:</li>
                 <li className="single-page__list-item-value">
                   {genreArr}
                 </li>
                 <li className="single-page__list-item-name">Runtime:</li>
-                <li className="single-page__list-item-value">{runtime} min</li>
+                <li className="single-page__list-item-value">{isMovie ? runtime : episode_run_time} min</li>
               </ul>
             </div>
             <div className="single-page__right-column">
               <div className="single-page__video"></div>
               <div className="single-page__overview">
-               {overview}
+                {overview}
               </div>
             </div>
           </div>
