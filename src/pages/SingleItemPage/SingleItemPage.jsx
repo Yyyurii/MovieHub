@@ -6,6 +6,7 @@ import AppContext from "../../context";
 
 const SingleItemPage = ({isMovie}) => {
   const { singleItemsDetails } = useContext(AppContext);
+  console.log(singleItemsDetails);
 
   const {
     original_title,
@@ -15,7 +16,8 @@ const SingleItemPage = ({isMovie}) => {
     genres,
     runtime,
     overview,
-    vote_average
+    vote_average,
+    first_air_date
   } = singleItemsDetails;
 
   const genreArr = genres ? genres.map(item => item.name).toString() : 'Genre';
@@ -39,7 +41,7 @@ const SingleItemPage = ({isMovie}) => {
                 <li className="single-page__list-item-name">Rating:</li>
                 <li className="single-page__list-item-value">{vote_average}</li>
                 <li className="single-page__list-item-name">Release date:</li>
-                <li className="single-page__list-item-value">{release_date}</li>
+                <li className="single-page__list-item-value">{isMovie ? release_date : first_air_date}</li>
                 {/* <li className="single-page__list-item-name">Country:</li>
                 <li className="single-page__list-item-value">
                   United states of America
