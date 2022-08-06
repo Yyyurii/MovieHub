@@ -13,7 +13,6 @@ import {
   SingleItemPage,
   TopicSectionFullContentPage,
 } from "../../pages";
-import Loader from "../Loader";
 
 const App = () => {
   const [mostPopularMovies, setMostPopularMovies] = useState([]);
@@ -21,7 +20,6 @@ const App = () => {
   const [popularTV, setPopularTV] = useState([]);
   const [randomMovie, setRandomMovie] = useState([]);
   const [singleItemsDetails, setSingleItemsDetails] = useState({});
-  const [video, setVideo] = useState({});
 
   useEffect(() => {
     getMostPopularMoviesList();
@@ -32,6 +30,8 @@ const App = () => {
   }, []);
 
   const {
+    error,
+    loading,
     getMostPopularMovies,
     getNowPlayingMovies,
     getPopularTV,
@@ -63,8 +63,6 @@ const App = () => {
   const getTVOnClick = (singleItemId) => {
     getTVbyId(singleItemId).then((res) => setSingleItemsDetails(res));
   };
-
-  
 
   return (
     <>

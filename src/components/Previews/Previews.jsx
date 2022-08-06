@@ -5,20 +5,38 @@ import { useState, useEffect } from "react";
 
 import PreviewsDescription from "../PreviewsDescription/PreviewsDescription";
 import PreviewsTrailers from "../PreviewsTrailers";
+import useImdb from "../../services/imdb";
 
 const Previews = ({ data }) => {
   const [backgroundSrc, setBackgroundSrc] = useState("");
   const [nowPlayingMoview, setNowPlayingMoview] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeId, setActiveId] = useState(null);
+  const [movieKey, setMovieKey] = useState(null);
+
+  const { getVideoForMovie } = useImdb();
 
   useEffect(() => {
-    filterMovies();
-  }, [data]);
+    const filterMovies = () => {
+      const movies = data.slice(0, 9);
+      setNowPlayingMoview(movies);
+    };
 
-  const filterMovies = () => {
-    const movies = data.slice(0, 9);
-    setNowPlayingMoview(movies);
-  };
+    const getActiveMovieId = async () => {
+      const item = await data[activeSlide];
+      if (item) setActiveId(item.id);
+    };
+
+    const getMovieKey = async (id) => {
+      const arg = id;
+      if (arg)
+        getVideoForMovie(id).then((res) => setMovieKey(res.results[0].key));
+    };
+
+    filterMovies();
+    getActiveMovieId();
+    getMovieKey(activeId);
+  }, [data, activeId, activeSlide]);
 
   const setImgSrc = (src) => {
     setBackgroundSrc(src);
