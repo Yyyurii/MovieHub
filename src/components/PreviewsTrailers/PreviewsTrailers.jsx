@@ -5,21 +5,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./previewsTrailers.scss";
 
-const PreviewsTrailers = ({ setImgSrc, movies, setActiveSlide }) => {
-  useEffect(() => {
-    if (movies) {
-      movies.forEach((item, index) => index === 0 ? setImgSrc(item.imgPath) : null);
-    }
-  }, [movies]);
+const PreviewsTrailers = ({ movies, setActiveSlide }) => {
 
   const renderMovies = (moviesList) => {
     const list = moviesList.map((item, index) => {
       return (
         <div key={item.id}>
-          <div
-            className="gallery__item"
-            onClick={() => setImgSrc(item.imgPath)}
-          >
+          <div className="gallery__item">
             <span>{`${index + 1}`}</span>
             <img src={item.imgPath} alt="trailers" />
           </div>

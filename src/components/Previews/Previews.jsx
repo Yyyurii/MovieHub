@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 import PreviewsDescription from "../PreviewsDescription/PreviewsDescription";
 import PreviewsTrailers from "../PreviewsTrailers";
+import ModalVideo from "../ModalVideo";
 import useImdb from "../../services/imdb";
 
 const Previews = ({ data }) => {
@@ -13,6 +14,7 @@ const Previews = ({ data }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeId, setActiveId] = useState(null);
   const [movieKey, setMovieKey] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { getVideoForMovie } = useImdb();
 
@@ -33,14 +35,16 @@ const Previews = ({ data }) => {
         getVideoForMovie(id).then((res) => setMovieKey(res.results[0].key));
     };
 
+    const setImgSrc = () => {
+      const imgSrc = data[activeSlide];
+      if (imgSrc) setBackgroundSrc(imgSrc.imgPath);
+    };
+
     filterMovies();
     getActiveMovieId();
     getMovieKey(activeId);
+    setImgSrc();
   }, [data, activeId, activeSlide]);
-
-  const setImgSrc = (src) => {
-    setBackgroundSrc(src);
-  };
 
   return (
     <div className="previews-container">
@@ -51,16 +55,16 @@ const Previews = ({ data }) => {
           alt="main poster"
         />
         <div className="previews">
-          <div className="play-btn">
+          <div className="play-btn" onClick={() => setIsOpen(!isOpen)}>
             <div className="play-btn__wrap-circle">
               <div className="play-btn__img-container">
                 <img src={triangle} alt="Play btn" />
               </div>
             </div>
           </div>
+          <ModalVideo modal={isOpen} setModal={setIsOpen} movieKey={movieKey} />
           <PreviewsDescription movie={nowPlayingMoview[activeSlide]} />
           <PreviewsTrailers
-            setImgSrc={setImgSrc}
             movies={nowPlayingMoview}
             setActiveSlide={setActiveSlide}
           />
