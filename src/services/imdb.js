@@ -57,6 +57,13 @@ const useImdb = () => {
     return response;
   };
 
+  const getVideoForTV= async (id) => {
+    const response = await request(
+      `${url}tv/${id}/videos?api_key=${key}&language=en-US`
+    );
+    return response;
+  };
+
   const _transform = (data) => {
     const genres = {
       12: "Adventure",
@@ -122,6 +129,7 @@ const useImdb = () => {
     getMoviebyId,
     getTVbyId,
     getVideoForMovie,
+    getVideoForTV
   };
 };
 export default useImdb;

@@ -6,25 +6,29 @@ import useImdb from "../../services/imdb";
 
 import AppContext from "../../context";
 import Loader from "../../components/Loader";
-import ErrorMessage from "../../components/ErrorMessage";
 
 const SingleItemPage = ({ isMovie }) => {
   const { singleItemsDetails } = useContext(AppContext);
-  const { getVideoForMovie } = useImdb();
+  const { getVideoForMovie, getVideoForTV } = useImdb();
   const { id } = singleItemsDetails;
 
-  const [videoKey, setVideoKey] = useState({});
+  const [movieKey, setMovieKey] = useState({});
+  const [tvKey, setTVKey] = useState({});
   const [isDisplayed, setIsDisplayed] = useState(false);
 
   const getMovieVideo = (id) => {
-    getVideoForMovie(id).then((res) => setVideoKey(res.results[0].key));
+    getVideoForMovie(id).then((res) => setMovieKey(res.results[0].key));
+  };
+
+  const getTVVideo = (id) => {
+    getVideoForTV(id).then((res) => setTVKey(res.results[0].key));
   };
 
   useEffect(() => {
     setTimeout(() => {
       setIsDisplayed(true);
     }, 1000);
-    getMovieVideo(id);
+    isMovie ? getMovieVideo(id) : getTVVideo(id);
   }, [singleItemsDetails]);
 
   return (
@@ -33,7 +37,8 @@ const SingleItemPage = ({ isMovie }) => {
         <View
           details={singleItemsDetails}
           isMovie={isMovie}
-          videoKey={videoKey}
+          movieKey={movieKey}
+          tvKey={tvKey}
         />
       ) : (
         <Loader />
@@ -44,7 +49,7 @@ const SingleItemPage = ({ isMovie }) => {
 
 export default SingleItemPage;
 
-const View = ({ details, isMovie, videoKey }) => {
+const View = ({ details, isMovie, movieKey, tvKey }) => {
   const {
     original_title,
     backdrop_path,
@@ -101,7 +106,7 @@ const View = ({ details, isMovie, videoKey }) => {
                 <iframe
                   width="100%"
                   height="385"
-                  src={`https://www.youtube.com/embed/${videoKey}`}
+                  src={`https://www.youtube.com/embed/${isMovie ? movieKey : tvKey}`}
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
