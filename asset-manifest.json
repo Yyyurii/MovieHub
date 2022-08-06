@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/MovieHub/static/css/main.32164e9e.css",
+    "main.js": "/MovieHub/static/js/main.60632b8f.js",
+    "static/media/01.jpg": "/MovieHub/static/media/01.9b4f7dc6b0bdc4ffee95.jpg",
+    "static/media/icomoon.svg?87xelf": "/MovieHub/static/media/icomoon.bba819d21420d51ffee7.svg",
+    "static/media/icomoon.eot?87xelf": "/MovieHub/static/media/icomoon.e89666578869a46f09f7.eot",
+    "static/media/icomoon.woff?87xelf": "/MovieHub/static/media/icomoon.21a98e11b50cbbb41624.woff",
+    "static/media/icomoon.ttf?87xelf": "/MovieHub/static/media/icomoon.cb1d75211b856ad0157d.ttf",
+    "static/media/slick.svg": "/MovieHub/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/MovieHub/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/photo-cover.svg": "/MovieHub/static/media/photo-cover.fb98cf13a87225efe558669bdc541ac7.svg",
+    "static/media/error.svg": "/MovieHub/static/media/error.13fbec13bb84467dd375e4c806e46ce7.svg",
+    "static/media/logo.svg": "/MovieHub/static/media/logo.6b62b9a27068b6652c88c1a54193c33d.svg",
+    "static/media/slick.ttf": "/MovieHub/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/MovieHub/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/imdb.svg": "/MovieHub/static/media/imdb.02b32b5c2c3b2c95dc0cd18cf43cb652.svg",
+    "index.html": "/MovieHub/index.html",
+    "static/media/triangle.svg": "/MovieHub/static/media/triangle.793b1aa47f3dd1e84e216202a2c2f0fe.svg",
+    "main.32164e9e.css.map": "/MovieHub/static/css/main.32164e9e.css.map",
+    "main.60632b8f.js.map": "/MovieHub/static/js/main.60632b8f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.32164e9e.css",
+    "static/js/main.60632b8f.js"
+  ]
+}
