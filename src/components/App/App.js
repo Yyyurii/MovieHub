@@ -7,6 +7,7 @@ import AppContext from "../../context";
 
 import Footer from "../Footer/Footer";
 import Head from "../Head";
+import Loader from "../Loader";
 import {
   Page404,
   MainPage,
@@ -20,13 +21,16 @@ const App = () => {
   const [popularTV, setPopularTV] = useState([]);
   const [randomMovie, setRandomMovie] = useState([]);
   const [singleItemsDetails, setSingleItemsDetails] = useState({});
+  const [isDisplayed, setIsDisplayed] = useState(false);
 
   useEffect(() => {
     getMostPopularMoviesList();
     getNowPlayingMoviesList();
     getPopularTVList();
     // getRandomFilm();
-    // getMovieVideo(616037)
+    setTimeout(() => {
+      setIsDisplayed(true);
+    }, 1000);
   }, []);
 
   const {
@@ -66,62 +70,68 @@ const App = () => {
 
   return (
     <>
-      <AppContext.Provider
-        value={{
-          getFilmOnClick,
-          getTVOnClick,
-          singleItemsDetails,
-          getMostPopularMovies,
-          setMostPopularMovies,
-          getPopularTV,
-          setPopularTV,
-        }}
-      >
-        <Head />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <MainPage
-                data={nowPlayingMovies}
-                movieItemList={mostPopularMovies}
-                movieTitle="The Most Popular Movies"
-                TVItemList={popularTV}
-                TVtitle="The Most Popular TV Shows"
-                randomMovie={randomMovie}
-                getRandomFilm={getRandomFilm}
+      {!isDisplayed ? (
+        <Loader />
+      ) : (
+        <>
+          <AppContext.Provider
+            value={{
+              getFilmOnClick,
+              getTVOnClick,
+              singleItemsDetails,
+              getMostPopularMovies,
+              setMostPopularMovies,
+              getPopularTV,
+              setPopularTV,
+            }}
+          >
+            <Head />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <MainPage
+                    data={nowPlayingMovies}
+                    movieItemList={mostPopularMovies}
+                    movieTitle="The Most Popular Movies"
+                    TVItemList={popularTV}
+                    TVtitle="The Most Popular TV Shows"
+                    randomMovie={randomMovie}
+                    getRandomFilm={getRandomFilm}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/movies"
-            element={
-              <TopicSectionFullContentPage
-                itemsList={mostPopularMovies}
-                isMovie={true}
+              <Route
+                path="/movies"
+                element={
+                  <TopicSectionFullContentPage
+                    itemsList={mostPopularMovies}
+                    isMovie={true}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/movies/:movieTitle"
-            element={<SingleItemPage isMovie={true} />}
-          />
+              <Route
+                path="/movies/:movieTitle"
+                element={<SingleItemPage isMovie={true} />}
+              />
 
-          <Route
-            path="/tv-shows"
-            element={
-              <TopicSectionFullContentPage
-                itemsList={popularTV}
-                isMovie={false}
+              <Route
+                path="/tv-shows"
+                element={
+                  <TopicSectionFullContentPage
+                    itemsList={popularTV}
+                    isMovie={false}
+                  />
+                }
               />
-            }
-          />
-          <Route path="/tv-shows/:TVTitle" element={<SingleItemPage />} />
+              <Route path="/tv-shows/:TVTitle" element={<SingleItemPage />} />
 
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-        <Footer />
-      </AppContext.Provider>
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+            <Footer />
+          </AppContext.Provider>
+        </>
+      )}
     </>
   );
 };

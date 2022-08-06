@@ -10,31 +10,34 @@ import ErrorMessage from "../../components/ErrorMessage";
 
 const SingleItemPage = ({ isMovie }) => {
   const { singleItemsDetails } = useContext(AppContext);
-  const { getVideoForMovie, error, loading } = useImdb();
+  const { getVideoForMovie } = useImdb();
   const { id } = singleItemsDetails;
 
   const [videoKey, setVideoKey] = useState({});
+  const [isDisplayed, setIsDisplayed] = useState(false);
 
   const getMovieVideo = (id) => {
     getVideoForMovie(id).then((res) => setVideoKey(res.results[0].key));
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsDisplayed(true);
+    }, 1000);
     getMovieVideo(id);
   }, [singleItemsDetails]);
 
-  const spinner = loading ? <Loader /> : null;
-  const errorMessage = error ? <ErrorMessage /> : null;
-
   return (
     <>
-      {spinner}
-      {errorMessage}
-      <View
-        details={singleItemsDetails}
-        isMovie={isMovie}
-        videoKey={videoKey}
-      />
+      {isDisplayed ? (
+        <View
+          details={singleItemsDetails}
+          isMovie={isMovie}
+          videoKey={videoKey}
+        />
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
