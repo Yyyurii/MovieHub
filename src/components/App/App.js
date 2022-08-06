@@ -88,7 +88,7 @@ const App = () => {
             <Head />
             <Routes>
               <Route
-                path="/"
+                path="/MovieHub"
                 element={
                   <MainPage
                     data={nowPlayingMovies}
@@ -102,7 +102,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/movies"
+                path="MovieHub/movies"
                 element={
                   <TopicSectionFullContentPage
                     itemsList={mostPopularMovies}
@@ -111,12 +111,12 @@ const App = () => {
                 }
               />
               <Route
-                path="/movies/:movieTitle"
+                path="MovieHub/movies/:movieTitle"
                 element={<SingleItemPage isMovie={true} />}
               />
 
               <Route
-                path="/tv-shows"
+                path="MovieHub/tv-shows"
                 element={
                   <TopicSectionFullContentPage
                     itemsList={popularTV}
@@ -124,7 +124,7 @@ const App = () => {
                   />
                 }
               />
-              <Route path="/tv-shows/:TVTitle" element={<SingleItemPage />} />
+              <Route path="MovieHub/tv-shows/:TVTitle" element={<SingleItemPage />} />
 
               <Route path="*" element={<Page404 />} />
             </Routes>

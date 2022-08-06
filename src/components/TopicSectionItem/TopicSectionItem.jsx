@@ -14,7 +14,7 @@ const TopicSectionItem = ({ details, wider, isMovie }) => {
 
   return (
     <Link
-      to={`/${isMovie ? "movies" : "tv-shows"}/${title ? title : name}`}
+      to={`/${isMovie ? "MovieHub/movies" : "MovieHub/tv-shows"}/${title ? title : name}`}
       className={wider === 0 ? "card card_wider" : "card"}
       onClick={() => isMovie ? getFilmOnClick(id) : getTVOnClick(id)}
     >

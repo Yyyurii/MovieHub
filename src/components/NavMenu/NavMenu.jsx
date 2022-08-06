@@ -14,7 +14,7 @@ const NavMenu = ({ show }) => {
       <ul className={show ? "menu__list burger-active" : "menu__list"}>
         <li className="menu__item">
           <NavLink
-            to="movies"
+            to="MovieHub/movies"
             className="menu__link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
@@ -23,7 +23,7 @@ const NavMenu = ({ show }) => {
         </li>
         <li className="menu__item">
           <NavLink
-            to="tv-shows"
+            to="MovieHub/tv-shows"
             className="menu__link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
@@ -32,7 +32,7 @@ const NavMenu = ({ show }) => {
         </li>
         <li className="menu__item">
           <NavLink
-            to="coming-soon"
+            to="MovieHub/coming-soon"
             className="menu__link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >

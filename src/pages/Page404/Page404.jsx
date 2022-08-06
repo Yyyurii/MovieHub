@@ -10,7 +10,7 @@ const Page404 = () => {
         <div className="page-404">
           <img className="page-404__img" src={error} alt="error" />
           <span className="page-404__text">Page not found</span>
-          <Link to="/" className="page-404__btn">Back to the Home page</Link>
+          <Link to="/MovieHub" className="page-404__btn">Back to the Home page</Link>
         </div>
       </div>
     </div>

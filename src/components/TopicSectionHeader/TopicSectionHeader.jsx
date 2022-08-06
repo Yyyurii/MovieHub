@@ -8,7 +8,7 @@ const TopicSectionHeader = ({title, isMovie}) => {
       <div className="topic-section__title">
         {title}
       </div>
-      <Link to={`${isMovie ? '/movies' : '/tv-shows'}`} >View More</Link>
+      <Link to={`${isMovie ? '/MovieHub/movies' : '/MovieHub/tv-shows'}`} >View More</Link>
     </div>
   );
 };
