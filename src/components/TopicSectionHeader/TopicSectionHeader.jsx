@@ -1,12 +1,14 @@
 import "./topicSectionHeader.scss";
 
-const TopicSectionHeader = ({title}) => {
+import { Link } from 'react-router-dom';
+
+const TopicSectionHeader = ({title, isMovie}) => {
   return (
     <div className="topic-section__header">
-      <a href="/" className="topic-section__title">
+      <div className="topic-section__title">
         {title}
-      </a>
-      <button>View More</button>
+      </div>
+      <Link to={`${isMovie ? '/movies' : '/tv-shows'}`} >View More</Link>
     </div>
   );
 };

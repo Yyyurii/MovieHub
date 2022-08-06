@@ -7,10 +7,6 @@ $yellow: #fed530;
     line-height: 64px;
     padding: 0 0 4px;
 
-    &:hover {
-      text-decoration: underline;
-    }
-
     @media (max-width: 1400px) {
       font-size: 36px;
       line-height: 52px;
@@ -32,7 +28,7 @@ $yellow: #fed530;
       margin: 56px 0;
     }
 
-    button {
+    a {
       font-weight: 700;
       font-size: 24px;
       line-height: 32px;

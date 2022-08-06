@@ -7,7 +7,7 @@ const TopicSection = ({itemsList, title, isMovie}) => {
   return (
     <div className="topic-section">
       <div className="container">
-        <TopicSectionHeader title={title} />
+        <TopicSectionHeader title={title} isMovie={isMovie}/>
         <TopicSectionItems itemsList={itemsList} isMovie={isMovie}/>
       </div>
     </div>
