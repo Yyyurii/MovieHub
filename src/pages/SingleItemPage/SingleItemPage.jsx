@@ -52,6 +52,7 @@ export default SingleItemPage;
 const View = ({ details, isMovie, movieKey, tvKey }) => {
   const {
     original_title,
+    original_name,
     backdrop_path,
     poster_path,
     release_date,
@@ -78,7 +79,7 @@ const View = ({ details, isMovie, movieKey, tvKey }) => {
           <div className="single-page__background-color"></div>
         </div>
         <div className="container">
-          <h1 className="single-page__title">{original_title}</h1>
+          <h1 className="single-page__title">{isMovie ? original_title : original_name}</h1>
           <div className="single-page__columns">
             <div className="single-page__left-column">
               <img

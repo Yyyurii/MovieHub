@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -30,6 +29,7 @@ const PreviewsTrailers = ({ movies, setActiveSlide }) => {
     infinite: true,
     centerPadding: "0px 30px 30px 0px",
     slidesToShow: 3,
+    initialSlide: 1,
     speed: 500,
     focusOnSelect: true,
     dots: false,
@@ -40,8 +40,10 @@ const PreviewsTrailers = ({ movies, setActiveSlide }) => {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 0
         },
-      },
+      }
     ],
   };
 

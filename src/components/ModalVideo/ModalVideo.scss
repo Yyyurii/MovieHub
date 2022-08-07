@@ -32,10 +32,10 @@
     0px 25.8162px 19px 4px rgba(178, 178, 178, 0.0456112),
     0px 7.779px 7.30492px rgba(0, 0, 0, 0.035),
     0px 1.48838px 2.0843px rgba(0, 0, 0, 0.0243888);
-  // border-radius: 20px;
   background: transparent;
   color: #000;
   margin: 0rem 4rem;
+  text-align: center;
 }
 
 .modal__close {
@@ -56,7 +56,6 @@
 }
 
 .modal__video-style {
-  // border-radius: 20px;
   z-index: 100;
 }
 
@@ -101,6 +100,7 @@
     bottom: 0px;
   }
   .modal__video-style {
-    height: auto;
+    // height: auto;
+    height: 286px;
   }
 }
