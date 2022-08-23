@@ -22,6 +22,7 @@ const App = () => {
   const [randomMovie, setRandomMovie] = useState([]);
   const [singleItemsDetails, setSingleItemsDetails] = useState({});
   const [isDisplayed, setIsDisplayed] = useState(false);
+  const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     getMostPopularMoviesList();
@@ -39,10 +40,8 @@ const App = () => {
     getPopularTV,
     getRandomMovie,
     getMoviebyId,
-    getTVbyId
+    getTVbyId,
   } = useImdb();
-
- 
 
   const getMostPopularMoviesList = (page) => {
     getMostPopularMovies(page).then((res) => setMostPopularMovies(res));
@@ -70,7 +69,7 @@ const App = () => {
 
   const linkEl = useRef(null);
   const onButtonClick = () => {
-    window.scrollTo(0, linkEl.current.scrollHeight)
+    window.scrollTo(0, linkEl.current.scrollHeight);
   };
 
   return (
@@ -88,7 +87,8 @@ const App = () => {
               setMostPopularMovies,
               getPopularTV,
               setPopularTV,
-              onButtonClick
+              onButtonClick,
+              setSearchData
             }}
           >
             <Head />
@@ -130,8 +130,15 @@ const App = () => {
                   />
                 }
               />
-              <Route path="MovieHub/tv-shows/:TVTitle" element={<SingleItemPage />} />
-
+              <Route
+                path="MovieHub/tv-shows/:TVTitle"
+                element={<SingleItemPage />}
+              />
+              <Route
+                path="MovieHub/search"
+                element={<TopicSectionFullContentPage itemsList={searchData} isMovie={true} />}
+              />
+              <Route path="MovieHub/error" element={<Page404 />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />

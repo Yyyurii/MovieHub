@@ -1,12 +1,16 @@
 import "./searchPanel.scss";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import useImdb from "../../services/imdb";
+import AppContext from "../../context";
 
 const SearchPanel = () => {
   const [isShownInput, setIsShownInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const { multiSearch } = useImdb();
+  const { setSearchData } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -14,7 +18,14 @@ const SearchPanel = () => {
   };
 
   const searchMulti = (term) => {
-    multiSearch(term).then((res) => console.log(res));
+    multiSearch(term).then((res) => {
+      if (res.length > 0) {
+        setSearchData(res);
+        navigate("MovieHub/search");
+      } else {
+        navigate("MovieHub/error");
+      }
+    });
   };
 
   const onSubmitEvent = (e) => {
@@ -31,13 +42,13 @@ const SearchPanel = () => {
         onSubmitEvent(e);
         handleClick(e);
       }}
-      onChange={(e) => setSearchValue(e.target.value)}
     >
       <input
         value={searchValue}
         className="search-panel__input"
         placeholder="Search"
         autoComplete="off"
+        onChange={(e) => setSearchValue(e.target.value)}
       ></input>
       <div
         className="search-panel__button icon-search"

@@ -68,7 +68,7 @@ const useImdb = () => {
     const response = await request(
       `${url}search/multi?api_key=${key}&language=en-US&query=${term}`
     );
-    return response;
+    return response.results.map(_transform);
   }
 
   const _transform = (data) => {
@@ -105,10 +105,12 @@ const useImdb = () => {
     const genre = () => {
       let genre = data.genre_ids;
       let genreArr = [];
-      if (genre.length > 0) {
+      if (genre.length && genre.length > 0) {
         genre.forEach((item) => {
           genreArr.push(genres[item]);
         });
+      } else {
+        return genre
       }
       return genreArr;
     };
