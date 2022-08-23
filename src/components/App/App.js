@@ -34,15 +34,15 @@ const App = () => {
   }, []);
 
   const {
-    error,
-    loading,
     getMostPopularMovies,
     getNowPlayingMovies,
     getPopularTV,
     getRandomMovie,
     getMoviebyId,
-    getTVbyId,
+    getTVbyId
   } = useImdb();
+
+ 
 
   const getMostPopularMoviesList = (page) => {
     getMostPopularMovies(page).then((res) => setMostPopularMovies(res));
