@@ -29,7 +29,6 @@ const PreviewsTrailers = ({ movies, setActiveSlide }) => {
     infinite: true,
     centerPadding: "0px 30px 30px 0px",
     slidesToShow: 3,
-    initialSlide: 1,
     speed: 500,
     focusOnSelect: true,
     dots: false,
@@ -41,7 +40,6 @@ const PreviewsTrailers = ({ movies, setActiveSlide }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 0
         },
       }
     ],

@@ -1,6 +1,6 @@
 import "./app.scss";
 import "../../assets/styles/icons.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import useImdb from "../../services/imdb";
 import AppContext from "../../context";
@@ -68,6 +68,11 @@ const App = () => {
     getTVbyId(singleItemId).then((res) => setSingleItemsDetails(res));
   };
 
+  const linkEl = useRef(null);
+  const onButtonClick = () => {
+    window.scrollTo(0, linkEl.current.scrollHeight)
+  };
+
   return (
     <>
       {!isDisplayed ? (
@@ -83,6 +88,7 @@ const App = () => {
               setMostPopularMovies,
               getPopularTV,
               setPopularTV,
+              onButtonClick
             }}
           >
             <Head />
