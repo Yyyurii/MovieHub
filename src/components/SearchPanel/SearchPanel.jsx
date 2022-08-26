@@ -8,7 +8,7 @@ import AppContext from "../../context";
 const SearchPanel = () => {
   const [isShownInput, setIsShownInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const { multiSearch } = useImdb();
+  const { multiSearch, loading, error } = useImdb();
   const { setSearchData } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const SearchPanel = () => {
 
   const searchMulti = (term) => {
     multiSearch(term).then((res) => {
-      if (res.length > 0) {
+      if (res.length > 0 && !error) {
         setSearchData(res);
         navigate("MovieHub/search");
       } else {

@@ -13,7 +13,7 @@ const Head = () => {
           <Logo />
           <Navbar />
           <SearchPanel />
-          <User />
+          {/* <User /> */}
         </div>
       </div>
     </div>

@@ -10,14 +10,14 @@ $yellow: #fed530;
   padding: 0 0 30px;
   overflow: hidden;
 
-  p {
-    margin: 0 0 32px;
+  // p {
+  //   margin: 0 0 32px;
 
-    @media (max-width: 479.98px) {
-      text-align: center;
-      margin: 16px 0;
-    }
-  }
+  //   @media (max-width: 479.98px) {
+  //     text-align: center;
+  //     margin: 16px 0;
+  //   }
+  // }
 
   @media (max-width: 900px) {
     order: 3;
@@ -29,7 +29,7 @@ $yellow: #fed530;
   gap: 16px;
 
   @media (max-width: 479.98px) {
-    margin: 20px 0;
+    // margin: 20px 0;
   }
 
   img {
