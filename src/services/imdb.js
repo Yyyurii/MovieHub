@@ -105,7 +105,7 @@ const useImdb = () => {
     const genre = () => {
       let genre = data.genre_ids;
       let genreArr = [];
-      if (genre.length && genre.length > 0) {
+      if (Array.isArray(genre) && genre.length > 0) {
         genre.forEach((item) => {
           genreArr.push(genres[item]);
         });

@@ -19,7 +19,7 @@ const TopicSectionItem = ({ details, wider, isMovie }) => {
       onClick={() => isMovie ? getFilmOnClick(id) : getTVOnClick(id)}
     >
       <img className="card__poster" src={imgPath} alt="main poster" />
-      <div className="card__genre">{genre[0]}</div>
+      <div className="card__genre">{genre ? genre[0] : 'Genre'}</div>
       <div className="card__raiting">
         <img src={imdb} alt="views" />
         <span>{rating}</span>
