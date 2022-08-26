@@ -11,11 +11,11 @@ const TopicSectionHeader = ({ title, isMovie }) => {
     <div className="topic-section__header">
       <div className="topic-section__title">{title}</div>
       {isMovie ? (
-        <Link to="/MovieHub/movies" onClick={onButtonClick}>
+        <Link to="MovieHub/movies" onClick={onButtonClick}>
           View More
         </Link>
       ) : (
-        <Link to="/MovieHub/tv-shows" onClick={onButtonClick}>
+        <Link to="MovieHub/tv-shows" onClick={onButtonClick}>
           View More
         </Link>
       )}
