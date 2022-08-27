@@ -67,6 +67,10 @@ $yellow: #fed530;
     line-height: 24px;
     display: flex;
     align-items: center;
+    
+    &:hover {
+      color: white;
+    }
 
     img {
       margin-right: 8px;
@@ -88,6 +92,10 @@ $yellow: #fed530;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    &:hover {
+      color: white;
+    }
 
     @media (max-width: 1400px) {
       font-size: 16px;
