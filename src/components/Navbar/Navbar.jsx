@@ -9,8 +9,9 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const toggleOffCanvas = () => {
+    setShow((show) => !show);
+  };
 
   useEffect(() => {
     function handleWindowResize() {
@@ -31,7 +32,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="burger" onClick={handleShow}>
+      <div className="burger" onClick={toggleOffCanvas}>
         <span></span>
         <span></span>
         <span></span>
@@ -39,7 +40,7 @@ const Navbar = () => {
       {windowSize > 800 ? (
         <NavMenu show={show} />
       ) : (
-        <NavSidebar show={show} onHide={handleClose} />
+        <NavSidebar show={show} toggleOffCanvas={toggleOffCanvas} />
       )}
     </>
   );

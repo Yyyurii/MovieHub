@@ -3,14 +3,14 @@ import "./navSidebar.scss";
 
 import NavMenu from "../NavMenu";
 
-const NavSidebar = ({ show, onHide }) => {
+const NavSidebar = ({ show, toggleOffCanvas }) => {
   return (
-    <Offcanvas show={show} onHide={onHide}>
+    <Offcanvas show={show} onHide={toggleOffCanvas}>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Menu</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <NavMenu />
+        <NavMenu toggleOffCanvas={toggleOffCanvas} />
       </Offcanvas.Body>
     </Offcanvas>
   );

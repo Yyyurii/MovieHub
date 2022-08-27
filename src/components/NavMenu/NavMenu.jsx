@@ -1,7 +1,7 @@
 import "./navMenu.scss";
 import { NavLink } from "react-router-dom";
 
-const NavMenu = ({ show }) => {
+const NavMenu = ({ show, toggleOffCanvas }) => {
   let activeStyle = {
     padding: "0 0 4px",
     borderBottom: "4px solid #fed530",
@@ -14,7 +14,8 @@ const NavMenu = ({ show }) => {
       <ul className={show ? "menu__list burger-active" : "menu__list"}>
         <li className="menu__item">
           <NavLink
-            to="MovieHub/movies"
+            onClick={toggleOffCanvas}
+            to="/MovieHub/movies"
             className="menu__link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
@@ -23,7 +24,8 @@ const NavMenu = ({ show }) => {
         </li>
         <li className="menu__item">
           <NavLink
-            to="MovieHub/tv-shows"
+            onClick={toggleOffCanvas}
+            to="/MovieHub/tv-shows"
             className="menu__link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
@@ -32,7 +34,8 @@ const NavMenu = ({ show }) => {
         </li>
         <li className="menu__item">
           <NavLink
-            to="MovieHub/coming-soon"
+            onClick={toggleOffCanvas}
+            to="/MovieHub/coming-soon"
             className="menu__link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >

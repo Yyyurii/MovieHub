@@ -1,6 +1,6 @@
 import "./topicSectionHeader.scss";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import AppContext from "../../context";
 
@@ -11,13 +11,13 @@ const TopicSectionHeader = ({ title, isMovie }) => {
     <div className="topic-section__header">
       <div className="topic-section__title">{title}</div>
       {isMovie ? (
-        <Link to="MovieHub/movies" onClick={onButtonClick}>
+        <NavLink to="/MovieHub/movies" onClick={onButtonClick}>
           View More
-        </Link>
+        </NavLink>
       ) : (
-        <Link to="MovieHub/tv-shows" onClick={onButtonClick}>
+        <NavLink to="/MovieHub/tv-shows" onClick={onButtonClick}>
           View More
-        </Link>
+        </NavLink>
       )}
     </div>
   );
