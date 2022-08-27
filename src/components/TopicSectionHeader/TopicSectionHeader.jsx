@@ -1,26 +1,30 @@
 import "./topicSectionHeader.scss";
 
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AppContext from "../../context";
 
 const TopicSectionHeader = ({ title, isMovie }) => {
   const { onButtonClick } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const onClickNavigate = () => {
+    return isMovie
+      ? navigate("/MovieHub/movies")
+      : navigate("/MovieHub/tv-shows");
+  };
 
   return (
     <div className="topic-section__header">
       <div className="topic-section__title">{title}</div>
-      <nav>
-        {isMovie ? (
-          <NavLink to="movies" onClick={onButtonClick}>
-            View More
-          </NavLink>
-        ) : (
-          <NavLink to="tv-shows" onClick={onButtonClick}>
-            View More
-          </NavLink>
-        )}
-      </nav>
+      <div className="topic-section__link"
+        onClick={(e) => {
+          onClickNavigate();
+          onButtonClick(e);
+        }}
+      >
+        View More
+      </div>
     </div>
   );
 };

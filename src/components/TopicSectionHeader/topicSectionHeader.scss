@@ -28,21 +28,22 @@ $yellow: #fed530;
     @media (max-width: 1400px) {
       margin: 56px 0;
     }
+  }
 
-    a {
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 32px;
-      color: $yellow;
+  &__link {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: $yellow;
+    cursor: pointer;
 
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
+    }
 
-      @media (max-width: 478.98px) {
-        font-size: 16px;
-        line-height: 24px;
-      }
+    @media (max-width: 478.98px) {
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 }
