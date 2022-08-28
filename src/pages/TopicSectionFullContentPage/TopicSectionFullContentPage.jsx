@@ -2,6 +2,7 @@ import "./TopicSectionFullContentPage.scss";
 import { useContext, useState } from "react";
 import TopicSectionItem from "../../components/TopicSectionItem";
 import AppContext from "../../context";
+import FilterBox from "../../components/FiltersBox";
 
 const TopicSectionFullContentPage = ({ itemsList, isMovie }) => {
   const {
@@ -16,6 +17,7 @@ const TopicSectionFullContentPage = ({ itemsList, isMovie }) => {
   return (
     <div className="topic-section-full-content">
       <div className="container">
+        <FilterBox />
         <div className="topic-section-items">
           {itemsList.map((item, index) => (
             <TopicSectionItem key={item.id} details={item} isMovie={isMovie} />
