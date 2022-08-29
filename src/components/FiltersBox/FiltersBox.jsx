@@ -1,57 +1,80 @@
 import "./FiltersBox.scss";
-import { Container, Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
+import { Button, DropdownButton, Dropdown } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react";
+import AppContext from "../../context";
+import useImdb from "../../services/imdb";
 
 const FiltersBox = () => {
+  const { setDiscoverFilters, getDiscoverMovie } = useContext(AppContext);
+  const { movieList } = useImdb();
+  const [listMovie, setListMovie] = useState([]);
+  const [sortBy, setSortBy] = useState("");
+  const [genre, setGenre] = useState("");
+
+  useEffect(() => {
+    getMovieList();
+    if(sortBy || genre !== '') getDiscoverMovie(`${sortBy + genre}`);
+  }, [sortBy, genre]);
+
+  const setFiltersUrl = () => {
+    setDiscoverFilters(`${sortBy + genre}`);
+  };
+
+  const getMovieList = () => {
+    movieList().then((res) => setListMovie(res.genres));
+  };
+
   return (
-    <Navbar variant="dark" bg="dark" expand="lg" className="filter-box">
-      <Container fluid>
-        <Navbar.Brand href="#home">Filters</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar-dark-example" />
-        <Navbar.Collapse id="navbar-dark-example">
-          <Nav>
-            <NavDropdown
-              id="nav-dropdown-dark-example"
-              title="Sort by"
-              menuVariant="dark"
+    <div className="filter-box">
+      <DropdownButton
+        id="nav-dropdown-dark-example"
+        menuVariant="dark"
+        title="Sort by"
+        variant="dark"
+        onSelect={(e) => {
+          setSortBy(e);
+          setFiltersUrl();
+        }}
+      >
+        <Dropdown.Item eventKey="&sort_by=popularity.desc">
+          Popular
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="&sort_by=release_date.desc">
+          Release date
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="&sort_by=vote_average.asc">
+          Vote average
+        </Dropdown.Item>
+      </DropdownButton>
+      <DropdownButton
+        id="nav-dropdown-dark-example"
+        menuVariant="dark"
+        title="Genre"
+        variant="dark"
+        onSelect={(e) => {
+          setGenre(e);
+          setFiltersUrl();
+        }}
+      >
+        {listMovie.map((item) => {
+          return (
+            <Dropdown.Item
+              key={item.id}
+              eventKey={`&with_genres=${item.name.toLowerCase()}`}
             >
-              <NavDropdown.Item href="#action/3.1">Most popular</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Release date</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Vote average</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown
-              id="nav-dropdown-dark-example"
-              title="Genre"
-              menuVariant="dark"
-            >
-              <NavDropdown.Item href="#action/3.1">Advanture</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Horror</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Fantasy</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown
-              id="nav-dropdown-dark-example"
-              title="Year"
-              menuVariant="dark"
-            >
-              <NavDropdown.Item href="#action/3.1">2022</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">2021</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">2020</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown
-              id="nav-dropdown-dark-example"
-              title="Rating"
-              menuVariant="dark"
-            >
-              <NavDropdown.Item href="#action/3.1">10</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">9</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">8</NavDropdown.Item>
-            </NavDropdown>
-            <Button className="filter-box__btn-clear" variant="outline-light" size="sm">
-              Clear filters
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+              {item.name}
+            </Dropdown.Item>
+          );
+        })}
+      </DropdownButton>
+      <Button
+        className="filter-box__btn-clear"
+        variant="outline-light"
+        size="sm"
+      >
+        Clear filters
+      </Button>
+    </div>
   );
 };
 

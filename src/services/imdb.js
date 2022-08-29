@@ -71,6 +71,20 @@ const useImdb = () => {
     return response.results.map(_transform);
   }
 
+  const discoverMovie = async (filters) => {
+    const response = await request(
+      `${url}discover/movie?api_key=${key}&language=en-US${filters}&page=2`
+    );
+    return response.results.map(_transform);
+  }
+
+  const movieList = async () => {
+    const response = await request(
+      `${url}genre/movie/list?api_key=${key}&language=en-US`
+    );
+    return response;
+  }
+
   const _transform = (data) => {
     const genres = {
       12: "Adventure",
@@ -139,7 +153,9 @@ const useImdb = () => {
     getTVbyId,
     getVideoForMovie,
     getVideoForTV,
-    multiSearch
+    multiSearch,
+    discoverMovie,
+    movieList
   };
 };
 export default useImdb;

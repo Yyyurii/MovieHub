@@ -1,9 +1,31 @@
 .filter-box {
   margin: 0 0 20px;
+  background-color: rgb(33, 37, 41);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  font-size: 14px;
+
+  &__title {
+    font-size: 18px;
+  }
 
   &__btn-clear {
     margin-left: auto;
   }
+
+  button, .btn-dark:focus {
+    box-shadow: none !important; 
+    border: none;
+  }
+
+ .dropdown-menu.show.dropdown-menu-dark {
+  max-height: 250px;
+  overflow: auto;
+ }
 }
 
 .navbar-nav {

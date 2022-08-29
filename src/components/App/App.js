@@ -23,12 +23,13 @@ const App = () => {
   const [singleItemsDetails, setSingleItemsDetails] = useState({});
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [searchData, setSearchData] = useState([]);
+  const [discoverData, setDiscoverData] = useState([]);
+  const [discoverFilters, setDiscoverFilters] = useState([]);
 
   useEffect(() => {
     getMostPopularMoviesList();
     getNowPlayingMoviesList();
     getPopularTVList();
-    // getRandomFilm();
     setTimeout(() => {
       setIsDisplayed(true);
     }, 1000);
@@ -41,6 +42,7 @@ const App = () => {
     getRandomMovie,
     getMoviebyId,
     getTVbyId,
+    discoverMovie
   } = useImdb();
 
   const getMostPopularMoviesList = (page) => {
@@ -71,6 +73,10 @@ const App = () => {
     window.scrollTo(0, e.target.scrollHeight);
   };
 
+  const getDiscoverMovie = (filters) => {
+    discoverMovie(filters).then((res) => setDiscoverData(res));
+  }
+
   return (
     <>
       {!isDisplayed ? (
@@ -87,7 +93,9 @@ const App = () => {
               getPopularTV,
               setPopularTV,
               onButtonClick,
-              setSearchData
+              setSearchData,
+              setDiscoverFilters,
+              getDiscoverMovie
             }}
           >
             <Head />
