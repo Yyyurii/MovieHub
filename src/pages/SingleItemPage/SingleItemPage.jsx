@@ -7,10 +7,10 @@ import useImdb from "../../services/imdb";
 import AppContext from "../../context";
 import Loader from "../../components/Loader";
 
-const SingleItemPage = ({ isMovie }) => {
+const SingleItemPage = () => {
   const { singleItemsDetails } = useContext(AppContext);
   const { getVideoForMovie, getVideoForTV } = useImdb();
-  const { id } = singleItemsDetails;
+  const { id, isMovie } = singleItemsDetails;
 
   const [movieKey, setMovieKey] = useState({});
   const [tvKey, setTVKey] = useState({});
@@ -61,8 +61,7 @@ const View = ({ details, isMovie, movieKey, tvKey }) => {
     overview,
     vote_average,
     first_air_date,
-    episode_run_time,
-    id,
+    episode_run_time
   } = details;
 
   const genreArr = genres

@@ -23,7 +23,8 @@ const App = () => {
   const [singleItemsDetails, setSingleItemsDetails] = useState({});
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [searchData, setSearchData] = useState([]);
-  const [discoverData, setDiscoverData] = useState([]);
+  const [discoverDataMovie, setDiscoverDataMovie] = useState([]);
+  const [discoverDataTV, setDiscoverDataTV] = useState([]);
   const [discoverFilters, setDiscoverFilters] = useState([]);
 
   useEffect(() => {
@@ -42,19 +43,38 @@ const App = () => {
     getRandomMovie,
     getMoviebyId,
     getTVbyId,
-    discoverMovie
+    discoverMovie,
+    discoverTV
   } = useImdb();
 
   const getMostPopularMoviesList = (page) => {
-    getMostPopularMovies(page).then((res) => setMostPopularMovies(res));
+    getMostPopularMovies(page).then((res) => {
+      let data = res.map((item) => {
+        let cloneItem = { ...item, isMovie: true };
+        return cloneItem;
+      });
+      setMostPopularMovies(data);
+    });
   };
 
   const getNowPlayingMoviesList = () => {
-    getNowPlayingMovies().then((res) => setNowPlayingMovies(res));
+    getNowPlayingMovies().then((res) => {
+      let data = res.map((item) => {
+        let cloneItem = { ...item, isMovie: true };
+        return cloneItem;
+      });
+      setNowPlayingMovies(data);
+    });
   };
 
   const getPopularTVList = () => {
-    getPopularTV().then((res) => setPopularTV(res));
+    getPopularTV().then((res) => {
+      let data = res.map((item) => {
+        let cloneItem = { ...item, isMovie: false };
+        return cloneItem;
+      });
+      setPopularTV(data);
+    });
   };
 
   const getRandomFilm = () => {
@@ -62,11 +82,17 @@ const App = () => {
   };
 
   const getFilmOnClick = (singleItemId) => {
-    getMoviebyId(singleItemId).then((res) => setSingleItemsDetails(res));
+    getMoviebyId(singleItemId).then((res) => {
+      let data = { ...res, isMovie: true };
+      setSingleItemsDetails(data);
+    });
   };
 
   const getTVOnClick = (singleItemId) => {
-    getTVbyId(singleItemId).then((res) => setSingleItemsDetails(res));
+    getTVbyId(singleItemId).then((res) => {
+      let data = { ...res, isMovie: false };
+      setSingleItemsDetails(data);
+    });
   };
 
   const onButtonClick = (e) => {
@@ -74,8 +100,26 @@ const App = () => {
   };
 
   const getDiscoverMovie = (filters) => {
-    discoverMovie(filters).then((res) => setDiscoverData(res));
-  }
+    discoverMovie(filters).then((res) => {
+      let data = res.map((item) => {
+        let cloneItem = {};
+        item.title ? cloneItem = { ...item, isMovie: true } : cloneItem = { ...item, isMovie: false }
+        return cloneItem;
+      });
+      setDiscoverDataMovie(data);
+    });
+  };
+
+  const getDiscoverTV = (filters) => {
+    discoverTV(filters).then((res) => {
+      let data = res.map((item) => {
+        let cloneItem = {};
+        item.title ? cloneItem = { ...item, isMovie: true } : cloneItem = { ...item, isMovie: false }
+        return cloneItem;
+      });
+      setDiscoverDataTV(data);
+    });
+  };
 
   return (
     <>
@@ -95,7 +139,8 @@ const App = () => {
               onButtonClick,
               setSearchData,
               setDiscoverFilters,
-              getDiscoverMovie
+              getDiscoverMovie,
+              getDiscoverTV
             }}
           >
             <Head />
@@ -119,13 +164,12 @@ const App = () => {
                 element={
                   <TopicSectionFullContentPage
                     itemsList={mostPopularMovies}
-                    isMovie={true}
                   />
                 }
               />
               <Route
                 path="/MovieHub/movies/:movieTitle"
-                element={<SingleItemPage isMovie={true} />}
+                element={<SingleItemPage />}
               />
 
               <Route
@@ -133,7 +177,6 @@ const App = () => {
                 element={
                   <TopicSectionFullContentPage
                     itemsList={popularTV}
-                    isMovie={false}
                   />
                 }
               />
@@ -143,7 +186,11 @@ const App = () => {
               />
               <Route
                 path="/MovieHub/search"
-                element={<TopicSectionFullContentPage itemsList={searchData} isMovie={true} />}
+                element={
+                  <TopicSectionFullContentPage
+                    itemsList={searchData}
+                  />
+                }
               />
               <Route path="/MovieHub/error" element={<Page404 />} />
               <Route path="*" element={<Page404 />} />

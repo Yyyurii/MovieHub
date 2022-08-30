@@ -7,14 +7,14 @@ import { useContext } from "react";
 
 import AppContext from "../../context";
 
-const TopicSectionItem = ({ details, wider, isMovie }) => {
+const TopicSectionItem = ({ details, wider }) => {
   const { getFilmOnClick, getTVOnClick } = useContext(AppContext);
 
-  const { title, name, imgPath, rating, genre, id } = details;
+  const { title, name, imgPath, rating, genre, id, isMovie } = details;
 
   return (
     <Link
-      to={`/${isMovie ? "MovieHub/movies" : "MovieHub/tv-shows"}/${title ? title : name}`}
+      to={`/${isMovie ? "MovieHub/movies" : "MovieHub/tv-shows"}/${title ? title.split(' ').join('') : name.split(' ').join('')}`}
       className={wider === 0 ? "card card_wider" : "card"}
       onClick={() => isMovie ? getFilmOnClick(id) : getTVOnClick(id)}
     >

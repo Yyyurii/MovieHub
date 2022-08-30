@@ -4,7 +4,7 @@ import TopicSectionItem from "../../components/TopicSectionItem";
 import AppContext from "../../context";
 import FilterBox from "../../components/FiltersBox";
 
-const TopicSectionFullContentPage = ({ itemsList, isMovie }) => {
+const TopicSectionFullContentPage = ({ itemsList }) => {
   const {
     getMostPopularMovies,
     setMostPopularMovies,
@@ -20,14 +20,14 @@ const TopicSectionFullContentPage = ({ itemsList, isMovie }) => {
         <FilterBox />
         <div className="topic-section-items">
           {itemsList.map((item, index) => (
-            <TopicSectionItem key={item.id} details={item} isMovie={isMovie} />
+            <TopicSectionItem key={item.id} details={item} />
           ))}
         </div>
       </div>
       <button
         className="topic-section-full-content__btn"
         onClick={() => {
-          if (isMovie) {
+          if (itemsList[0].isMovie) {
             getMostPopularMovies(pageMovie).then((res) =>
               setMostPopularMovies((movies) => [...movies, ...res])
             );

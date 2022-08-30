@@ -71,9 +71,16 @@ const useImdb = () => {
     return response.results.map(_transform);
   }
 
-  const discoverMovie = async (filters) => {
+  const discoverMovie = async (filters, page = 1) => {
     const response = await request(
-      `${url}discover/movie?api_key=${key}&language=en-US${filters}&page=2`
+      `${url}discover/movie?api_key=${key}&language=en-US${filters}&page=${page}`
+    );
+    return response.results.map(_transform);
+  }
+
+  const discoverTV = async (filters, page = 1) => {
+    const response = await request(
+      `${url}discover/tv?api_key=${key}&language=en-US${filters}&page=${page}`
     );
     return response.results.map(_transform);
   }
@@ -155,6 +162,7 @@ const useImdb = () => {
     getVideoForTV,
     multiSearch,
     discoverMovie,
+    discoverTV,
     movieList
   };
 };
