@@ -4,24 +4,32 @@ import { useContext, useState, useEffect } from "react";
 import AppContext from "../../context";
 import useImdb from "../../services/imdb";
 
-const FiltersBox = () => {
-  const { setDiscoverFilters, getDiscoverMovie } = useContext(AppContext);
-  const { movieList } = useImdb();
-  const [listMovie, setListMovie] = useState([]);
+const FiltersBox = ({ isMovie }) => {
+  const { getDiscoverMovie, getDiscoverTV } = useContext(AppContext);
+  const { movieGenreList, TVGenreList } = useImdb();
   const [sortBy, setSortBy] = useState("");
-  const [genre, setGenre] = useState("");
+  const [activeGenre, setActiveGenre] = useState("");
+  const [movieGenre, setMovieGenre] = useState([]);
+  const [TVGenre, setTVGenre] = useState([]);
 
   useEffect(() => {
-    getMovieList();
-    if(sortBy || genre !== '') getDiscoverMovie(`${sortBy + genre}`);
-  }, [sortBy, genre]);
-
-  const setFiltersUrl = () => {
-    setDiscoverFilters(`${sortBy + genre}`);
-  };
+    isMovie ? getMovieList() : getTVList();
+    if(sortBy || activeGenre !== "") getDiscoverData();
+  }, [sortBy, activeGenre]);
 
   const getMovieList = () => {
-    movieList().then((res) => setListMovie(res.genres));
+    movieGenreList().then((res) => setMovieGenre(res.genres));
+  };
+
+  const getTVList = () => {
+    TVGenreList().then((res) => setTVGenre(res.genres));
+  };
+
+  const getDiscoverData = () => {
+    console.log("getDiscoverData");
+    isMovie
+      ? getDiscoverMovie(`${sortBy + activeGenre}`)
+      : getDiscoverTV(`${sortBy + activeGenre}`);
   };
 
   return (
@@ -33,7 +41,6 @@ const FiltersBox = () => {
         variant="dark"
         onSelect={(e) => {
           setSortBy(e);
-          setFiltersUrl();
         }}
       >
         <Dropdown.Item eventKey="&sort_by=popularity.desc">
@@ -42,7 +49,7 @@ const FiltersBox = () => {
         <Dropdown.Item eventKey="&sort_by=release_date.desc">
           Release date
         </Dropdown.Item>
-        <Dropdown.Item eventKey="&sort_by=vote_average.asc">
+        <Dropdown.Item eventKey="&sort_by=vote_average.asc" >
           Vote average
         </Dropdown.Item>
       </DropdownButton>
@@ -52,15 +59,14 @@ const FiltersBox = () => {
         title="Genre"
         variant="dark"
         onSelect={(e) => {
-          setGenre(e);
-          setFiltersUrl();
+          setActiveGenre(e);
         }}
       >
-        {listMovie.map((item) => {
+        {(isMovie ? movieGenre : TVGenre).map((item) => {
           return (
             <Dropdown.Item
               key={item.id}
-              eventKey={`&with_genres=${item.name.toLowerCase()}`}
+              eventKey={`&with_genres=${item.id}`}
             >
               {item.name}
             </Dropdown.Item>

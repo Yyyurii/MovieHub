@@ -13,13 +13,13 @@ const TopicSectionFullContentPage = ({ itemsList }) => {
   } = useContext(AppContext);
   const [pageMovie, setPageMovie] = useState(2);
   const [pageTV, setPageTV] = useState(2);
-
+  const isMovie = itemsList[0].isMovie;
   return (
     <div className="topic-section-full-content">
       <div className="container">
-        <FilterBox />
+        <FilterBox isMovie={isMovie}/>
         <div className="topic-section-items">
-          {itemsList.map((item, index) => (
+          {itemsList.map((item) => (
             <TopicSectionItem key={item.id} details={item} />
           ))}
         </div>

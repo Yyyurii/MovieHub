@@ -75,6 +75,7 @@ const useImdb = () => {
     const response = await request(
       `${url}discover/movie?api_key=${key}&language=en-US${filters}&page=${page}`
     );
+    console.log('discoverMovie', filters);
     return response.results.map(_transform);
   }
 
@@ -85,9 +86,16 @@ const useImdb = () => {
     return response.results.map(_transform);
   }
 
-  const movieList = async () => {
+  const movieGenreList = async () => {
     const response = await request(
       `${url}genre/movie/list?api_key=${key}&language=en-US`
+    );
+    return response;
+  }
+
+  const TVGenreList = async () => {
+    const response = await request(
+      `${url}genre/tv/list?api_key=${key}&language=en-US`
     );
     return response;
   }
@@ -163,7 +171,8 @@ const useImdb = () => {
     multiSearch,
     discoverMovie,
     discoverTV,
-    movieList
+    movieGenreList,
+    TVGenreList
   };
 };
 export default useImdb;

@@ -25,7 +25,6 @@ const App = () => {
   const [searchData, setSearchData] = useState([]);
   const [discoverDataMovie, setDiscoverDataMovie] = useState([]);
   const [discoverDataTV, setDiscoverDataTV] = useState([]);
-  const [discoverFilters, setDiscoverFilters] = useState([]);
 
   useEffect(() => {
     getMostPopularMoviesList();
@@ -44,7 +43,7 @@ const App = () => {
     getMoviebyId,
     getTVbyId,
     discoverMovie,
-    discoverTV
+    discoverTV,
   } = useImdb();
 
   const getMostPopularMoviesList = (page) => {
@@ -103,9 +102,12 @@ const App = () => {
     discoverMovie(filters).then((res) => {
       let data = res.map((item) => {
         let cloneItem = {};
-        item.title ? cloneItem = { ...item, isMovie: true } : cloneItem = { ...item, isMovie: false }
+        item.title
+          ? (cloneItem = { ...item, isMovie: true })
+          : (cloneItem = { ...item, isMovie: false });
         return cloneItem;
       });
+      console.log(data);
       setDiscoverDataMovie(data);
     });
   };
@@ -114,9 +116,12 @@ const App = () => {
     discoverTV(filters).then((res) => {
       let data = res.map((item) => {
         let cloneItem = {};
-        item.title ? cloneItem = { ...item, isMovie: true } : cloneItem = { ...item, isMovie: false }
+        item.title
+          ? (cloneItem = { ...item, isMovie: true })
+          : (cloneItem = { ...item, isMovie: false });
         return cloneItem;
       });
+      console.log(data);
       setDiscoverDataTV(data);
     });
   };
@@ -138,9 +143,8 @@ const App = () => {
               setPopularTV,
               onButtonClick,
               setSearchData,
-              setDiscoverFilters,
               getDiscoverMovie,
-              getDiscoverTV
+              getDiscoverTV,
             }}
           >
             <Head />
@@ -162,9 +166,7 @@ const App = () => {
               <Route
                 path="/MovieHub/movies"
                 element={
-                  <TopicSectionFullContentPage
-                    itemsList={mostPopularMovies}
-                  />
+                  <TopicSectionFullContentPage itemsList={mostPopularMovies} />
                 }
               />
               <Route
@@ -174,11 +176,7 @@ const App = () => {
 
               <Route
                 path="/MovieHub/tv-shows"
-                element={
-                  <TopicSectionFullContentPage
-                    itemsList={popularTV}
-                  />
-                }
+                element={<TopicSectionFullContentPage itemsList={popularTV} />}
               />
               <Route
                 path="/MovieHub/tv-shows/:TVTitle"
@@ -186,11 +184,7 @@ const App = () => {
               />
               <Route
                 path="/MovieHub/search"
-                element={
-                  <TopicSectionFullContentPage
-                    itemsList={searchData}
-                  />
-                }
+                element={<TopicSectionFullContentPage itemsList={searchData} />}
               />
               <Route path="/MovieHub/error" element={<Page404 />} />
               <Route path="*" element={<Page404 />} />
